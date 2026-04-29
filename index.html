@@ -19,112 +19,354 @@
     <link rel="stylesheet" href="/styles.css" />
     <title>RAVLE — real world, real stakes</title>
   </head>
-  <body>
-    <main class="relative mx-auto flex min-h-dvh w-full max-w-[1280px] flex-col gap-8 overflow-hidden px-6 py-6 isolate md:px-12 md:py-8 lg:gap-12 xl:px-20 xl:py-10">
-      <div class="pointer-events-none absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
-        <div class="absolute -left-[120px] top-10 h-[360px] w-[360px] rounded-full bg-primary/[0.18] blur-[55px] md:blur-[90px] lg:-left-[160px] lg:-top-20 lg:h-[560px] lg:w-[560px]"></div>
-        <div class="absolute -right-[120px] top-[30%] h-[320px] w-[320px] rounded-full bg-amber/[0.28] blur-[55px] md:blur-[90px] lg:-right-[200px] lg:top-[10%] lg:h-[480px] lg:w-[480px]"></div>
-        <div class="absolute -bottom-20 left-1/2 h-[280px] w-[120%] -translate-x-1/2 rounded-full bg-primary/[0.10] blur-[70px] md:blur-[110px] lg:-bottom-40 lg:h-[380px] lg:blur-[130px]"></div>
-      </div>
+  <body class="overflow-x-hidden">
+    <div class="bg-decor" aria-hidden="true"></div>
 
-      <div class="pointer-events-none absolute left-1/2 top-[14%] -z-10 hidden h-[340px] w-[340px] -translate-x-1/2 md:block lg:left-auto lg:right-[4%] lg:top-1/2 lg:h-[620px] lg:w-[620px] lg:-translate-x-0 lg:-translate-y-1/2" aria-hidden="true">
-        <div class="absolute inset-0 rounded-full border border-black/[0.08] animate-orbit-slow motion-reduce:animate-none">
-          <span class="absolute left-1/2 top-0 -ml-1.5 -mt-1.5 h-3 w-3 rounded-full bg-primary shadow-[0_0_18px_rgba(225,29,72,0.6)]"></span>
-        </div>
-        <div class="absolute inset-[28px] rounded-full border border-black/[0.08] animate-orbit-fast motion-reduce:animate-none lg:inset-[56px]">
-          <span class="absolute right-0 top-1/2 -mr-[5px] -mt-[5px] h-2.5 w-2.5 rounded-full bg-blue shadow-[0_0_14px_rgba(37,99,235,0.5)]"></span>
-        </div>
-        <div class="absolute inset-[56px] rounded-full border border-dashed border-black/[0.08] animate-orbit-dashed motion-reduce:animate-none lg:inset-[112px]"></div>
-      </div>
-
-      <header class="flex justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-black/50 lg:text-[11px]">
-        <span>v0.2 — mvp</span>
-        <span>est. 2026</span>
-      </header>
-
-      <div class="grid flex-1 grid-cols-1 items-end gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(420px,480px)] lg:items-center lg:gap-16 xl:gap-24">
-        <section class="pt-14 lg:max-w-[600px] lg:pt-0">
-          <div class="mb-4 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
-            <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
-            <span>a real-world game</span>
+    <main class="relative mx-auto w-full max-w-[1280px] px-5 md:px-12 xl:px-20">
+      <!-- ============================================================== -->
+      <!-- HERO — full viewport sign-up                                    -->
+      <!-- ============================================================== -->
+      <section
+        id="hero"
+        class="relative flex min-h-[100dvh] flex-col gap-6 py-5 md:py-8 lg:gap-12 xl:py-10"
+      >
+        <!-- Decorative orbits — desktop only, GPU-cheap on real hardware -->
+        <div class="pointer-events-none absolute left-1/2 top-[14%] -z-10 hidden h-[340px] w-[340px] -translate-x-1/2 md:block lg:left-auto lg:right-[4%] lg:top-1/2 lg:h-[620px] lg:w-[620px] lg:-translate-x-0 lg:-translate-y-1/2" aria-hidden="true">
+          <div class="absolute inset-0 rounded-full border border-black/[0.08] animate-orbit-slow motion-reduce:animate-none">
+            <span class="absolute left-1/2 top-0 -ml-1.5 -mt-1.5 h-3 w-3 rounded-full bg-primary shadow-[0_0_18px_rgba(225,29,72,0.6)]"></span>
           </div>
-          <h1 class="m-0 font-display text-[clamp(80px,16vw,200px)] font-extrabold leading-[0.85] tracking-[-0.04em] text-ink">RAVLE</h1>
-          <p class="mt-4 max-w-[28ch] font-display text-[clamp(22px,3.2vw,38px)] font-medium leading-[1.15] tracking-[-0.01em] text-ink-body">
-            Real world. <span class="text-primary">Real stakes.</span>
-          </p>
-          <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
-            AI-generated challenges, head-to-head duels with friends or strangers, group FFAs. Step outside and earn it.
-          </p>
-        </section>
+          <div class="absolute inset-[28px] rounded-full border border-black/[0.08] animate-orbit-fast motion-reduce:animate-none lg:inset-[56px]">
+            <span class="absolute right-0 top-1/2 -mr-[5px] -mt-[5px] h-2.5 w-2.5 rounded-full bg-blue shadow-[0_0_14px_rgba(37,99,235,0.5)]"></span>
+          </div>
+          <div class="absolute inset-[56px] rounded-full border border-dashed border-black/[0.08] animate-orbit-dashed motion-reduce:animate-none lg:inset-[112px]"></div>
+        </div>
 
-        <section
-          class="w-full justify-self-stretch rounded-[24px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_8px_24px_-8px_rgba(0,0,0,0.08)] md:p-8 lg:bg-white/85 lg:p-9 lg:shadow-[0_2px_6px_rgba(0,0,0,0.04),0_24px_56px_-16px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.04)] lg:backdrop-blur-[8px]"
-          aria-labelledby="signup-heading"
-        >
-          <h2 id="signup-heading" class="m-0 mb-1 font-display text-[22px] font-bold tracking-[-0.02em] text-ink">Get early access</h2>
-          <form id="signup" novalidate>
-            <fieldset class="m-0 mb-4 mt-5 grid grid-cols-1 gap-2 border-0 p-0 min-[540px]:grid-cols-2 lg:grid-cols-1 lg:gap-2.5">
-              <legend class="sr-only">What are you signing up for?</legend>
+        <header class="flex justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-black/50 lg:text-[11px]">
+          <span>v0.2 — mvp</span>
+          <span>est. 2026</span>
+        </header>
 
-              <label class="group relative flex cursor-pointer items-start gap-3 rounded-[20px] border border-line bg-page px-4 py-3.5 transition-[border-color,background,transform,box-shadow] duration-150 hover:border-line-strong active:scale-[0.99] has-[input:checked]:border-primary has-[input:checked]:bg-primary-soft has-[input:checked]:shadow-[0_0_0_1px_var(--color-primary),0_4px_14px_-4px_rgba(225,29,72,0.25)] has-[input:focus-visible]:outline has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-primary">
-                <input type="radio" name="type" value="waitlist" class="pointer-events-none absolute opacity-0" checked />
-                <div class="flex flex-1 flex-col gap-0.5">
-                  <strong class="text-sm font-semibold text-ink">Notify me at launch</strong>
-                  <small class="text-xs text-ink-dim">Tell me when it ships</small>
-                </div>
-                <span class="relative mt-0.5 h-[18px] w-[18px] flex-shrink-0 rounded-full border-[1.5px] border-line-strong bg-card transition-[border-color,background] duration-150 after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 after:transition-opacity group-has-[input:checked]:border-primary group-has-[input:checked]:bg-primary group-has-[input:checked]:after:opacity-100" aria-hidden="true"></span>
-              </label>
-
-              <label class="group relative flex cursor-pointer items-start gap-3 rounded-[20px] border border-line bg-page px-4 py-3.5 transition-[border-color,background,transform,box-shadow] duration-150 hover:border-line-strong active:scale-[0.99] has-[input:checked]:border-primary has-[input:checked]:bg-primary-soft has-[input:checked]:shadow-[0_0_0_1px_var(--color-primary),0_4px_14px_-4px_rgba(225,29,72,0.25)] has-[input:focus-visible]:outline has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-primary">
-                <input type="radio" name="type" value="beta" class="pointer-events-none absolute opacity-0" />
-                <div class="flex flex-1 flex-col gap-0.5">
-                  <strong class="text-sm font-semibold text-ink">Apply for the beta</strong>
-                  <small class="text-xs text-ink-dim">~50–100 spots — actively test it</small>
-                </div>
-                <span class="relative mt-0.5 h-[18px] w-[18px] flex-shrink-0 rounded-full border-[1.5px] border-line-strong bg-card transition-[border-color,background] duration-150 after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 after:transition-opacity group-has-[input:checked]:border-primary group-has-[input:checked]:bg-primary group-has-[input:checked]:after:opacity-100" aria-hidden="true"></span>
-              </label>
-            </fieldset>
-
-            <div class="flex w-full flex-col gap-2.5 min-[540px]:max-lg:flex-row">
-              <label for="email" class="sr-only">Email</label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                autocomplete="email"
-                inputmode="email"
-                placeholder="you@email.com"
-                maxlength="254"
-                class="h-[88px] w-full min-w-0 flex-1 appearance-none rounded-[20px] border-0 bg-soft-1 px-6 font-sans text-[16px] font-medium leading-none text-ink outline-none transition-[background,box-shadow] placeholder:text-[16px] placeholder:font-normal placeholder:text-ink-muted hover:bg-soft-2 focus:bg-card focus:shadow-[0_0_0_2px_var(--color-primary),0_0_0_6px_rgba(225,29,72,0.15)] lg:h-[92px] lg:px-7 lg:text-[17px] lg:placeholder:text-[17px]"
-              />
-              <input
-                type="text"
-                name="company"
-                tabindex="-1"
-                autocomplete="off"
-                class="honeypot"
-                aria-hidden="true"
-              />
-              <button
-                type="submit"
-                id="submit"
-                class="group inline-flex h-[88px] w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-[20px] border-0 bg-ink px-8 font-display text-[16px] font-semibold text-white transition-[transform,opacity,background] hover:bg-ink-hover active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[540px]:max-lg:w-auto lg:h-[92px] lg:px-10 lg:text-[17px]"
-              >
-                <span>Count me in</span>
-                <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
-              </button>
+        <div class="grid flex-1 grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(420px,480px)] lg:gap-16 xl:gap-24">
+          <section class="pt-6 lg:max-w-[600px] lg:pt-0">
+            <div class="mb-4 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+              <span>a real-world game</span>
             </div>
+            <h1 class="m-0 font-display text-[clamp(72px,15vw,200px)] font-extrabold leading-[0.85] tracking-[-0.04em] text-ink">RAVLE</h1>
+            <p class="mt-4 max-w-[28ch] font-display text-[clamp(22px,3.2vw,38px)] font-medium leading-[1.15] tracking-[-0.01em] text-ink-body">
+              Real world. <span class="text-primary">Real stakes.</span>
+            </p>
+            <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
+              AI-generated challenges, head-to-head duels with friends or strangers, group FFAs. Step outside and earn it.
+            </p>
+          </section>
 
-            <p class="mt-3 min-h-[1.4em] text-[13px] text-ink-dim" id="status" role="status" aria-live="polite"></p>
-          </form>
-          <p class="mt-[18px] text-center font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted">
-            By signing up you agree to play fair. We'll only email you about RAVLE.
+          <section
+            class="w-full justify-self-stretch rounded-[24px] border border-line bg-card p-5 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_8px_24px_-8px_rgba(0,0,0,0.08)] md:p-7 lg:bg-white/85 lg:p-9 lg:shadow-[0_2px_6px_rgba(0,0,0,0.04),0_24px_56px_-16px_rgba(0,0,0,0.18),0_0_0_1px_rgba(0,0,0,0.04)] lg:backdrop-blur-[8px]"
+            aria-labelledby="signup-heading"
+          >
+            <h2 id="signup-heading" class="m-0 mb-1 font-display text-[22px] font-bold tracking-[-0.02em] text-ink">Get early access</h2>
+            <p class="text-[13px] text-ink-dim">Pick one and drop your email.</p>
+            <form id="signup" novalidate>
+              <fieldset class="m-0 mb-3 mt-4 grid grid-cols-1 gap-2 border-0 p-0 min-[540px]:grid-cols-2 lg:grid-cols-1 lg:gap-2.5">
+                <legend class="sr-only">What are you signing up for?</legend>
+
+                <label class="group relative flex cursor-pointer items-start gap-3 rounded-[18px] border border-line bg-page px-4 py-3 transition-[border-color,background,transform,box-shadow] duration-150 hover:border-line-strong active:scale-[0.99] has-[input:checked]:border-primary has-[input:checked]:bg-primary-soft has-[input:checked]:shadow-[0_0_0_1px_var(--color-primary),0_4px_14px_-4px_rgba(225,29,72,0.25)] has-[input:focus-visible]:outline has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-primary">
+                  <input type="radio" name="type" value="waitlist" class="pointer-events-none absolute opacity-0" checked />
+                  <div class="flex flex-1 flex-col gap-0.5">
+                    <strong class="text-sm font-semibold text-ink">Notify me at launch</strong>
+                    <small class="text-xs text-ink-dim">Tell me when it ships</small>
+                  </div>
+                  <span class="relative mt-0.5 h-[18px] w-[18px] flex-shrink-0 rounded-full border-[1.5px] border-line-strong bg-card transition-[border-color,background] duration-150 after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 after:transition-opacity group-has-[input:checked]:border-primary group-has-[input:checked]:bg-primary group-has-[input:checked]:after:opacity-100" aria-hidden="true"></span>
+                </label>
+
+                <label class="group relative flex cursor-pointer items-start gap-3 rounded-[18px] border border-line bg-page px-4 py-3 transition-[border-color,background,transform,box-shadow] duration-150 hover:border-line-strong active:scale-[0.99] has-[input:checked]:border-primary has-[input:checked]:bg-primary-soft has-[input:checked]:shadow-[0_0_0_1px_var(--color-primary),0_4px_14px_-4px_rgba(225,29,72,0.25)] has-[input:focus-visible]:outline has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-primary">
+                  <input type="radio" name="type" value="beta" class="pointer-events-none absolute opacity-0" />
+                  <div class="flex flex-1 flex-col gap-0.5">
+                    <strong class="text-sm font-semibold text-ink">Apply for the beta</strong>
+                    <small class="text-xs text-ink-dim">~50–100 spots — actively test it</small>
+                  </div>
+                  <span class="relative mt-0.5 h-[18px] w-[18px] flex-shrink-0 rounded-full border-[1.5px] border-line-strong bg-card transition-[border-color,background] duration-150 after:absolute after:inset-1 after:rounded-full after:bg-white after:opacity-0 after:transition-opacity group-has-[input:checked]:border-primary group-has-[input:checked]:bg-primary group-has-[input:checked]:after:opacity-100" aria-hidden="true"></span>
+                </label>
+              </fieldset>
+
+              <div class="flex w-full flex-col gap-2 min-[540px]:max-lg:flex-row">
+                <label for="email" class="sr-only">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="you@email.com"
+                  maxlength="254"
+                  class="h-[60px] w-full min-w-0 flex-1 appearance-none rounded-[16px] border-0 bg-soft-1 px-5 font-sans text-[16px] font-medium leading-none text-ink outline-none transition-[background,box-shadow] placeholder:text-[14px] placeholder:font-normal placeholder:tracking-[0] placeholder:text-ink-muted hover:bg-soft-2 focus:bg-card focus:shadow-[0_0_0_2px_var(--color-primary),0_0_0_6px_rgba(225,29,72,0.15)] md:h-[64px] md:px-6 md:placeholder:text-[15px] lg:h-[72px] lg:rounded-[18px] lg:px-7 lg:text-[17px] lg:placeholder:text-[16px]"
+                />
+                <input
+                  type="text"
+                  name="company"
+                  tabindex="-1"
+                  autocomplete="off"
+                  class="honeypot"
+                  aria-hidden="true"
+                />
+                <button
+                  type="submit"
+                  id="submit"
+                  class="group inline-flex h-[60px] w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-[16px] border-0 bg-ink px-6 font-display text-[15px] font-semibold text-white transition-[transform,opacity,background] hover:bg-ink-hover active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:h-[64px] md:text-[16px] min-[540px]:max-lg:w-auto lg:h-[72px] lg:rounded-[18px] lg:px-9 lg:text-[17px]"
+                >
+                  <span>Count me in</span>
+                  <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+                </button>
+              </div>
+
+              <p class="mt-3 min-h-[1.4em] text-[13px] text-ink-dim" id="status" role="status" aria-live="polite"></p>
+            </form>
+            <p class="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted">
+              By signing up you agree to play fair. We'll only email you about RAVLE.
+            </p>
+          </section>
+        </div>
+
+        <!-- Scroll cue -->
+        <a
+          href="#what"
+          class="group mx-auto mb-2 mt-2 flex flex-col items-center gap-1.5 self-center font-mono text-[10px] uppercase tracking-[0.3em] text-ink-dim transition-colors hover:text-ink"
+          aria-label="Scroll to learn more"
+        >
+          <span>more below</span>
+          <svg class="scroll-cue-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3v9" />
+            <path d="M4 9l4 4 4-4" />
+          </svg>
+        </a>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- WHAT — concept                                                  -->
+      <!-- ============================================================== -->
+      <section id="what" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
+          <div>
+            <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+              <span>what is ravle</span>
+            </div>
+            <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
+              An app that pushes you <span class="text-primary">off the couch.</span>
+            </h2>
+          </div>
+          <div class="flex flex-col gap-5 lg:pt-3">
+            <p class="m-0 font-display text-[clamp(18px,2.4vw,24px)] font-medium leading-[1.4] tracking-[-0.01em] text-ink-body">
+              RAVLE flips gaming on its head. Every challenge happens in the real world — your street, your park, your city. There's no infinite scroll, no watching. Just dares the AI cooks up, and the moves you actually make.
+            </p>
+            <ul class="m-0 grid grid-cols-2 gap-3 p-0 sm:grid-cols-4">
+              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
+                <div class="font-display text-[22px] font-bold leading-none text-ink">1k+</div>
+                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">missions</div>
+              </li>
+              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
+                <div class="font-display text-[22px] font-bold leading-none text-ink">4</div>
+                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">categories</div>
+              </li>
+              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
+                <div class="font-display text-[22px] font-bold leading-none text-ink">3</div>
+                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">play modes</div>
+              </li>
+              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
+                <div class="font-display text-[22px] font-bold leading-none text-ink">0</div>
+                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">screen time</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- MODES — Solo / Duel / Crew                                      -->
+      <!-- ============================================================== -->
+      <section id="modes" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="mb-10 max-w-[720px] md:mb-14">
+          <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+            <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+            <span>three ways to play</span>
+          </div>
+          <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
+            Solo. Duel. Crew.
+          </h2>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
+            Same engine. Three different stakes.
           </p>
-        </section>
-      </div>
+        </div>
 
-      <footer class="flex justify-between pt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted lg:text-[11px]">
+        <div class="reveal-stagger grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+            <div class="flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">◎</span>
+              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">01</span>
+            </div>
+            <div>
+              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Solo missions</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+                Summon an AI-generated dare tuned to your level. Pick easy, medium, or hard. Beat the timer, collect the XP.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
+              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span>play anywhere</span>
+            </div>
+          </article>
+
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+            <div class="flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">⚔</span>
+              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">02</span>
+            </div>
+            <div>
+              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Duels</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+                Head-to-head with a friend — or a stranger across town. Both submit proof. Voters pick the winner.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
+              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span>1 v 1, no excuses</span>
+            </div>
+          </article>
+
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+            <div class="flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">◈</span>
+              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">03</span>
+            </div>
+            <div>
+              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Group FFAs</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+                Your crew, one challenge, one winner. Bragging rights for a week and a spot on the group leaderboard.
+              </p>
+            </div>
+            <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
+              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span>everyone in</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- CATEGORIES                                                      -->
+      <!-- ============================================================== -->
+      <section id="categories" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="mb-10 grid grid-cols-1 items-end gap-6 md:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+          <div>
+            <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+              <span>all kinds of stakes</span>
+            </div>
+            <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
+              Four categories.<br />Infinite missions.
+            </h2>
+          </div>
+          <p class="m-0 max-w-[44ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base lg:justify-self-end">
+            Whatever kind of dare gets you moving. The AI mixes and matches so the next mission never repeats.
+          </p>
+        </div>
+
+        <div class="reveal-stagger grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          <div class="cat-tile rounded-[18px] border p-5 transition-transform hover:-translate-y-0.5" style="--c:#2563eb">
+            <span class="cat-glyph mb-4 flex h-10 w-10 items-center justify-center rounded-[12px] font-display text-[18px]">◎</span>
+            <h3 class="m-0 font-display text-[18px] font-bold tracking-[-0.01em] text-ink">Exploration</h3>
+            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Find a place you've never been. Document it.</p>
+          </div>
+          <div class="cat-tile rounded-[18px] border p-5 transition-transform hover:-translate-y-0.5" style="--c:#db2777">
+            <span class="cat-glyph mb-4 flex h-10 w-10 items-center justify-center rounded-[12px] font-display text-[18px]">✦</span>
+            <h3 class="m-0 font-display text-[18px] font-bold tracking-[-0.01em] text-ink">Creative</h3>
+            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Make something. Anywhere. Ten minutes.</p>
+          </div>
+          <div class="cat-tile rounded-[18px] border p-5 transition-transform hover:-translate-y-0.5" style="--c:#16a34a">
+            <span class="cat-glyph mb-4 flex h-10 w-10 items-center justify-center rounded-[12px] font-display text-[18px]">▲</span>
+            <h3 class="m-0 font-display text-[18px] font-bold tracking-[-0.01em] text-ink">Physical</h3>
+            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Move your body. Sweat is the receipt.</p>
+          </div>
+          <div class="cat-tile rounded-[18px] border p-5 transition-transform hover:-translate-y-0.5" style="--c:#ea580c">
+            <span class="cat-glyph mb-4 flex h-10 w-10 items-center justify-center rounded-[12px] font-display text-[18px]">◈</span>
+            <h3 class="m-0 font-display text-[18px] font-bold tracking-[-0.01em] text-ink">Social</h3>
+            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Talk to a stranger. Make someone laugh.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- FLOW — how a mission works                                      -->
+      <!-- ============================================================== -->
+      <section id="flow" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="mb-10 max-w-[720px] md:mb-14">
+          <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+            <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+            <span>a mission, end to end</span>
+          </div>
+          <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
+            Three steps. No grinding.
+          </h2>
+        </div>
+
+        <ol class="reveal-stagger relative m-0 grid grid-cols-1 gap-4 p-0 md:grid-cols-3 md:gap-6">
+          <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
+            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">01</span>
+            <div>
+              <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">AI summons a challenge</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Tuned to category and difficulty. Always different. Never the same dare twice.</p>
+            </div>
+          </li>
+          <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
+            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">02</span>
+            <div>
+              <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">You go do it</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Snap a photo as proof. RAVLE verifies you actually showed up — no fakes, no shortcuts.</p>
+            </div>
+          </li>
+          <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
+            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">03</span>
+            <div>
+              <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">XP, streaks, trophies</h3>
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- CLOSING                                                         -->
+      <!-- ============================================================== -->
+      <section id="outside" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="relative overflow-hidden rounded-[28px] border border-line bg-ink p-8 text-white shadow-[0_24px_56px_-16px_rgba(0,0,0,0.35)] md:p-14 lg:p-20">
+          <div class="pointer-events-none absolute -right-24 -top-24 h-[280px] w-[280px] rounded-full bg-primary/40 blur-[80px]" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-16 h-[220px] w-[220px] rounded-full bg-amber/30 blur-[80px]" aria-hidden="true"></div>
+
+          <div class="relative">
+            <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
+              <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
+              <span>built for the outside</span>
+            </div>
+            <h2 class="m-0 max-w-[18ch] font-display text-[clamp(36px,7vw,80px)] font-extrabold leading-[0.92] tracking-[-0.03em]">
+              Earn it <span class="text-primary">offline.</span>
+            </h2>
+            <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-white/70 lg:text-[17px]">
+              No infinite scroll. No watching other people live their lives. RAVLE is a phone game you only play when you put the phone down.
+            </p>
+            <a
+              href="#hero"
+              class="group mt-8 inline-flex items-center gap-2 rounded-[16px] bg-primary px-7 py-4 font-display text-[15px] font-semibold text-white transition-[transform,background] hover:bg-primary-deep active:scale-[0.98] md:text-[16px] lg:rounded-[18px] lg:px-9 lg:py-5 lg:text-[17px]"
+            >
+              <span>Get on the list</span>
+              <span class="transition-transform group-hover:-translate-y-0.5" aria-hidden="true">↑</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="flex justify-between py-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted lg:text-[11px]">
         <span>© 2026 RAVLE</span>
         <span>built for the outside</span>
       </footer>

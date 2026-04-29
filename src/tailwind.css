@@ -22,8 +22,12 @@
   --color-primary-tint: #ffe4e6;
 
   --color-blue: #2563eb;
+  --color-pink: #db2777;
+  --color-green: #16a34a;
+  --color-orange: #ea580c;
   --color-amber: #f59e0b;
   --color-win: #16a34a;
+  --color-gold: #eab308;
 
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
@@ -35,10 +39,25 @@
   --animate-orbit-slow: orbit 14s linear infinite;
   --animate-orbit-fast: orbit 9s linear infinite reverse;
   --animate-orbit-dashed: orbit 18s linear infinite;
+  --animate-bounce-down: bounce-down 1.8s ease-in-out infinite;
+  --animate-shine: shine 2.4s linear infinite;
+  --animate-tick: tick 1.6s ease-in-out infinite;
 
   @keyframes orbit {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+  }
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50%      { transform: translateY(6px); opacity: 1; }
+  }
+  @keyframes shine {
+    from { background-position: -200% 0; }
+    to   { background-position: 200% 0; }
+  }
+  @keyframes tick {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.18); }
   }
 }
 
@@ -50,12 +69,27 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
     min-height: 100dvh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 
   * {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent iOS Safari from zooming on input focus */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
   }
 }
 
@@ -67,5 +101,97 @@
     height: 1px;
     opacity: 0;
     pointer-events: none;
+  }
+
+  /*
+   * Static gradient backdrop — replaces heavy filter:blur() decorations.
+   * Radial-gradients are GPU-cheap; filter:blur() with 55–110px radius
+   * tanks scrolling performance on mobile.
+   */
+  .bg-decor {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at -5% 8%, rgba(225, 29, 72, 0.16), transparent 65%),
+      radial-gradient(55% 45% at 105% 22%, rgba(245, 158, 11, 0.18), transparent 65%),
+      radial-gradient(80% 40% at 50% 110%, rgba(225, 29, 72, 0.10), transparent 70%);
+  }
+
+  /*
+   * Reveal-on-scroll: starts hidden+offset, observer adds .is-visible.
+   * GPU-friendly: only transform + opacity.
+   */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 90ms; }
+  .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+  .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 270ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-stagger > * {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Subtle highlight for the scroll cue arrow */
+  .scroll-cue-arrow {
+    animation: var(--animate-bounce-down);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue-arrow { animation: none; }
+  }
+
+  /* Numbered step badge */
+  .step-num {
+    background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+    color: var(--color-primary);
+  }
+
+  /* Category tile color hook (set --c on element) */
+  .cat-tile {
+    --c: var(--color-primary);
+    background: color-mix(in oklab, var(--c) 6%, white);
+    border-color: color-mix(in oklab, var(--c) 18%, transparent);
+  }
+  .cat-tile .cat-glyph {
+    color: var(--c);
+    background: color-mix(in oklab, var(--c) 12%, white);
+  }
+
+  /* Mode card subtle gradient border on hover */
+  .mode-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  @media (hover: hover) {
+    .mode-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 0, 0, 0.14);
+      box-shadow: 0 12px 36px -16px rgba(0, 0, 0, 0.18),
+                  0 2px 6px rgba(0, 0, 0, 0.04);
+    }
   }
 }
