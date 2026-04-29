@@ -29,6 +29,22 @@
   --radius-card: 20px;
   --radius-lg: 24px;
   --radius-pill: 999px;
+
+  --page-pad-x: 24px;
+  --page-pad-y: 24px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-pad-x: 48px;
+    --page-pad-y: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --page-pad-x: 80px;
+    --page-pad-y: 40px;
+  }
 }
 
 *,
@@ -75,23 +91,24 @@ body {
   pointer-events: none;
 }
 
-.hero {
+/* --- page shell --- */
+.page {
   position: relative;
   min-height: 100dvh;
-  max-width: 720px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 24px 40px;
+  padding: var(--page-pad-y) var(--page-pad-x);
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  overflow: hidden;
+  gap: 32px;
   isolation: isolate;
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    padding: 40px 48px 56px;
-    gap: 40px;
+@media (min-width: 1024px) {
+  .page {
+    gap: 48px;
   }
 }
 
@@ -99,27 +116,27 @@ body {
 .washes {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   overflow: hidden;
 }
 .wash {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
 }
 .wash-rose {
   left: -120px;
   top: 40px;
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   background: rgba(225, 29, 72, 0.18);
 }
 .wash-amber {
   right: -120px;
   top: 30%;
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   background: rgba(245, 158, 11, 0.28);
 }
 .wash-bottom {
@@ -130,19 +147,49 @@ body {
   height: 280px;
   background: rgba(225, 29, 72, 0.1);
   border-radius: 100%;
-  filter: blur(100px);
+  filter: blur(110px);
+}
+
+@media (min-width: 1024px) {
+  .wash-rose {
+    left: -160px;
+    top: -80px;
+    width: 560px;
+    height: 560px;
+  }
+  .wash-amber {
+    right: -200px;
+    top: 10%;
+    width: 480px;
+    height: 480px;
+  }
+  .wash-bottom {
+    bottom: -160px;
+    height: 380px;
+    filter: blur(130px);
+  }
 }
 
 /* --- orbits --- */
 .orbits {
   position: absolute;
   left: 50%;
-  top: 12%;
-  transform: translateX(-50%);
+  top: 14%;
+  transform: translate(-50%, 0);
   width: 340px;
   height: 340px;
   z-index: -1;
   pointer-events: none;
+}
+@media (min-width: 1024px) {
+  .orbits {
+    left: auto;
+    right: 4%;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 620px;
+    height: 620px;
+  }
 }
 .orbit {
   position: absolute;
@@ -162,6 +209,10 @@ body {
   border-style: dashed;
   animation: orbit 18s linear infinite;
 }
+@media (min-width: 1024px) {
+  .orbit-2 { inset: 56px; }
+  .orbit-3 { inset: 112px; }
+}
 .orbit-dot {
   position: absolute;
   border-radius: 50%;
@@ -169,20 +220,20 @@ body {
 .orbit-dot-rose {
   left: 50%;
   top: 0;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
   background: var(--color-primary);
-  box-shadow: 0 0 16px rgba(225, 29, 72, 0.6);
+  box-shadow: 0 0 18px rgba(225, 29, 72, 0.6);
 }
 .orbit-dot-blue {
   right: 0;
   top: 50%;
-  width: 8px;
-  height: 8px;
-  margin: -4px -4px 0 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px -5px 0 0;
   background: var(--color-blue);
-  box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 14px rgba(37, 99, 235, 0.5);
 }
 
 @keyframes orbit {
@@ -204,33 +255,64 @@ body {
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
 }
+@media (min-width: 1024px) {
+  .topbar {
+    font-size: 11px;
+  }
+}
 
-/* --- hero content --- */
+/* --- stage: holds hero text + signup card --- */
+.stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: end;
+}
+@media (min-width: 1024px) {
+  .stage {
+    grid-template-columns: minmax(0, 1.1fr) minmax(420px, 480px);
+    gap: 64px;
+    align-items: center;
+  }
+}
+@media (min-width: 1280px) {
+  .stage {
+    gap: 96px;
+  }
+}
+
+/* --- hero content (left col on desktop) --- */
 .hero-content {
-  margin-top: auto;
-  padding-top: 80px;
+  padding-top: 56px;
+}
+@media (min-width: 1024px) {
+  .hero-content {
+    padding-top: 0;
+    max-width: 600px;
+  }
 }
 .tagline {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .tagline-line {
   display: inline-block;
-  width: 24px;
+  width: 28px;
   height: 4px;
   background: var(--color-primary);
 }
 .brand {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(80px, 18vw, 160px);
+  font-size: clamp(80px, 16vw, 200px);
   line-height: 0.85;
   letter-spacing: -0.04em;
   margin: 0;
@@ -239,34 +321,53 @@ body {
 .subhead {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(22px, 4vw, 32px);
+  font-size: clamp(22px, 3.2vw, 38px);
   line-height: 1.15;
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   color: var(--color-ink-body);
   max-width: 28ch;
+  letter-spacing: -0.01em;
 }
 .subhead .accent {
   color: var(--color-primary);
 }
 .blurb {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--color-ink-dim);
-  max-width: 44ch;
-  margin: 16px 0 0;
+  max-width: 52ch;
+  margin: 20px 0 0;
+}
+@media (min-width: 1024px) {
+  .blurb {
+    font-size: 16px;
+  }
 }
 
-/* --- signup card --- */
+/* --- signup card (right col on desktop) --- */
 .signup-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 24px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 8px 24px -8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  justify-self: stretch;
 }
 @media (min-width: 768px) {
   .signup-card {
     padding: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .signup-card {
+    padding: 36px;
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.04),
+      0 24px 56px -16px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.85);
   }
 }
 .signup-card h2 {
@@ -274,8 +375,11 @@ body {
   font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.02em;
-  margin: 0 0 20px;
+  margin: 0 0 4px;
   color: var(--color-ink);
+}
+.signup-card h2 + .segment {
+  margin-top: 20px;
 }
 
 .segment {
@@ -291,6 +395,12 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 }
+@media (min-width: 1024px) {
+  .segment {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
 .segment-option {
   position: relative;
   display: flex;
@@ -301,7 +411,7 @@ body {
   border-radius: var(--radius-card);
   background: var(--color-bg);
   cursor: pointer;
-  transition: border-color 160ms, background 160ms, transform 120ms;
+  transition: border-color 160ms, background 160ms, transform 120ms, box-shadow 160ms;
 }
 .segment-option:hover {
   border-color: var(--color-border-strong);
@@ -366,7 +476,7 @@ body {
   flex-direction: column;
   gap: 8px;
 }
-@media (min-width: 540px) {
+@media (min-width: 540px) and (max-width: 1023px) {
   .email-row {
     flex-direction: row;
   }
@@ -383,6 +493,7 @@ body {
   border-radius: var(--radius-card);
   outline: none;
   transition: border-color 160ms, box-shadow 160ms;
+  width: 100%;
 }
 .email-row input[type="email"]:focus {
   border-color: var(--color-primary);
@@ -407,6 +518,7 @@ body {
   justify-content: center;
   gap: 8px;
   transition: transform 120ms, opacity 160ms, background 160ms;
+  white-space: nowrap;
 }
 .email-row button:hover {
   background: #1f1f23;
@@ -461,6 +573,10 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
-  margin-top: auto;
-  padding-top: 24px;
+  padding-top: 8px;
+}
+@media (min-width: 1024px) {
+  .footer {
+    font-size: 11px;
+  }
 }
