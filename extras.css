@@ -722,10 +722,12 @@
   backdrop-filter: blur(8px);
 }
 
-/* mission card — mid, leans left into bento "One-tap missions" tile */
+/* mission card — leans left into bento "One-tap missions" tile.
+   top% is tuned so the card sits in the bento row (lower) and never
+   pokes up into the headline copy in the head row. */
 .phone-float-mission {
   --rot: -4deg;
-  top: 38%;
+  top: 56%;
   left: -32%;
   width: 232px;
   transform: rotate(var(--rot));
