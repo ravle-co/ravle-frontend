@@ -7,7 +7,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "build": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
     "dev": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch"
   },
   "devDependencies": {
