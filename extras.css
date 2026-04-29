@@ -491,9 +491,14 @@
 }
 
 .phone-screen {
-  position: relative;
-  height: 100%;
-  width: 100%;
+  /* absolute + inset matching the frame's 9px padding guarantees the
+     screen always sits exactly inside the bezel. width/height auto is
+     critical — the duplicate rule in styles.css sets width/height 100%
+     which would push the screen 9px past the frame on right + bottom. */
+  position: absolute;
+  inset: 9px;
+  width: auto;
+  height: auto;
   border-radius: 35px;
   overflow: hidden;
   background:
@@ -1045,27 +1050,47 @@
 /* ════════════════════════════════════════════════════════════════════
    CLOSING CTA — gradient blobs
    ════════════════════════════════════════════════════════════════════ */
+/* Sized smaller and pushed further outside the card on mobile so the
+   radial fade completes before the rounded corner clips it — otherwise
+   the soft glow gets cut hard at the corner edge and reads as
+   "shadowing" rather than a smooth tint. */
 .cta-blob-1 {
   position: absolute;
-  top: -96px;
-  right: -96px;
-  width: 280px;
-  height: 280px;
+  top: -140px;
+  right: -140px;
+  width: 220px;
+  height: 220px;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(225, 29, 72, 0.55) 0%, rgba(225, 29, 72, 0) 70%);
-  filter: blur(40px);
+  filter: blur(32px);
   pointer-events: none;
 }
 .cta-blob-2 {
   position: absolute;
-  bottom: -96px;
-  left: -64px;
-  width: 220px;
-  height: 220px;
+  bottom: -140px;
+  left: -120px;
+  width: 200px;
+  height: 200px;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(245, 158, 11, 0) 70%);
-  filter: blur(40px);
+  filter: blur(32px);
   pointer-events: none;
+}
+@media (min-width: 48rem) {
+  .cta-blob-1 {
+    top: -96px;
+    right: -96px;
+    width: 280px;
+    height: 280px;
+    filter: blur(40px);
+  }
+  .cta-blob-2 {
+    bottom: -96px;
+    left: -64px;
+    width: 220px;
+    height: 220px;
+    filter: blur(40px);
+  }
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -2762,20 +2787,26 @@
 .what-stat-hero {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 .what-stat-hero-num {
   font-family: var(--font-display, system-ui, sans-serif);
-  font-size: clamp(72px, 12vw, 128px);
+  font-size: clamp(64px, 16vw, 128px);
   font-weight: 800;
   line-height: 0.85;
   letter-spacing: -0.05em;
+  flex-shrink: 0;
 }
 .what-stat-hero-lbl {
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
+  flex: 1 1 auto;
+}
+@media (min-width: 30rem) {
+  .what-stat-hero { gap: 18px; flex-wrap: nowrap; }
 }
 .what-stat-hero-line1 {
   font-family: var(--font-display, system-ui, sans-serif);
