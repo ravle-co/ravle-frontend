@@ -8,8 +8,9 @@
 
   const setStatus = (msg, kind) => {
     status.textContent = msg;
-    status.classList.remove("success", "error");
-    if (kind) status.classList.add(kind);
+    status.classList.remove("text-win", "text-primary-deep");
+    if (kind === "success") status.classList.add("text-win");
+    if (kind === "error") status.classList.add("text-primary-deep");
   };
 
   form.addEventListener("submit", async (e) => {
