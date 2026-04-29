@@ -29,7 +29,7 @@
       <!-- ============================================================== -->
       <section
         id="hero"
-        class="relative flex min-h-[100dvh] flex-col gap-6 py-5 md:py-8 lg:gap-12 xl:py-10"
+        class="relative flex min-h-[88dvh] flex-col gap-6 py-5 md:py-8 lg:min-h-[88dvh] lg:gap-10 xl:py-10"
       >
         <div class="bg-grid -z-10 hidden lg:block" aria-hidden="true"></div>
 
@@ -55,17 +55,43 @@
               <span class="live-dot" aria-hidden="true"></span>
               <span>a real-world game · in beta</span>
             </div>
-            <h1 class="m-0 font-display text-[clamp(72px,15vw,200px)] font-extrabold leading-[0.85] tracking-[-0.04em] text-ink">
-              RAVLE
-            </h1>
-            <p class="mt-4 max-w-[28ch] font-display text-[clamp(22px,3.2vw,38px)] font-medium leading-[1.15] tracking-[-0.01em] text-ink-body">
+
+            <!-- layered wordmark: stroked echo behind, solid in front -->
+            <div class="hero-wordmark">
+              <span class="hero-wordmark-stroke" aria-hidden="true">RAVLE</span>
+              <h1 class="hero-wordmark-solid">RAVLE</h1>
+              <span class="hero-wordmark-burst" aria-hidden="true">
+                <span class="burst-dot"></span>
+                <span class="burst-text">+150 XP</span>
+              </span>
+            </div>
+
+            <p class="mt-3 max-w-[28ch] font-display text-[clamp(22px,3.2vw,38px)] font-medium leading-[1.15] tracking-[-0.01em] text-ink-body">
               Real world. <span class="text-grad-rose">Real stakes.</span>
             </p>
             <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
               AI-generated challenges, head-to-head duels with friends or strangers, group FFAs. Step outside and earn it.
             </p>
 
-            <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+            <!-- compact stat strip + categories — replaces lonely cat-dots row -->
+            <div class="mt-8 hero-stats">
+              <div class="hero-stat">
+                <span class="hero-stat-num">4</span>
+                <span class="hero-stat-lbl">categories</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-num">3</span>
+                <span class="hero-stat-lbl">play modes</span>
+              </div>
+              <div class="hero-stat-divider" aria-hidden="true"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-num">~12</span>
+                <span class="hero-stat-lbl">per day</span>
+              </div>
+            </div>
+
+            <div class="hero-cats mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
               <span class="inline-flex items-center gap-2">
                 <span class="cat-dot cat-dot-blue"></span>exploration
               </span>
@@ -196,40 +222,105 @@
       </section>
 
       <!-- ============================================================== -->
-      <!-- WHAT — concept with INLINE stats (no card grid)                 -->
+      <!-- WHAT — split layout: bold statement + scrolling proof column   -->
       <!-- ============================================================== -->
-      <section id="what" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
-          <div>
-            <div class="eyebrow mb-5"><span class="dash"></span><span>what is ravle</span></div>
-            <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-              An app that pushes you <span class="text-grad-rose">off the couch.</span>
+      <section id="what" class="what-section reveal relative scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="what-grid">
+          <div class="what-head">
+            <div class="eyebrow eyebrow-blue mb-5"><span class="dash"></span><span>what is ravle</span></div>
+            <h2 class="what-headline">
+              An app that pushes you
+              <span class="what-headline-emph">
+                <span class="what-headline-emph-text">off the couch</span>
+                <svg class="what-underline" viewBox="0 0 280 14" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M2 9 C 60 2, 130 12, 278 5" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+              </span>.
             </h2>
-          </div>
-          <div class="flex flex-col gap-6 lg:pt-3">
-            <p class="m-0 font-display text-[clamp(18px,2.4vw,24px)] font-medium leading-[1.4] tracking-[-0.01em] text-ink-body">
-              RAVLE flips gaming on its head. Every challenge happens in the real world — your street, your park, your city. There's no infinite scroll, no watching. Just dares the AI cooks up, and the moves you actually make.
+            <p class="what-lede">
+              RAVLE flips gaming on its head. Every challenge happens in the <em class="not-italic font-semibold text-ink">real world</em> — your street, your park, your city. No infinite scroll, no watching. Just dares the AI cooks up, and the moves you actually make.
             </p>
-            <!-- inline stats row, no boxes -->
-            <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 sm:grid-cols-4">
-              <div>
-                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">missions</dt>
-                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">1k<span class="text-primary">+</span></dd>
+
+            <!-- big anchor stat + supporting micro-stats -->
+            <div class="what-stat-block">
+              <div class="what-stat-hero">
+                <span class="what-stat-hero-num text-grad-rose">0</span>
+                <span class="what-stat-hero-lbl">
+                  <span class="what-stat-hero-line1">minutes</span>
+                  <span class="what-stat-hero-line2">of doomscroll. by design.</span>
+                </span>
               </div>
-              <div>
-                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">categories</dt>
-                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">4</dd>
+              <div class="what-microstats">
+                <div class="what-micro">
+                  <span class="what-micro-bar"><span class="what-micro-bar-fill" style="--w:88%"></span></span>
+                  <span class="what-micro-num">1k+</span>
+                  <span class="what-micro-lbl">unique missions</span>
+                </div>
+                <div class="what-micro">
+                  <span class="what-micro-bar"><span class="what-micro-bar-fill what-micro-bar-blue" style="--w:62%"></span></span>
+                  <span class="what-micro-num">3.2×</span>
+                  <span class="what-micro-lbl">avg steps vs control</span>
+                </div>
               </div>
-              <div>
-                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">play modes</dt>
-                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">3</dd>
-              </div>
-              <div>
-                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">screen time</dt>
-                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-grad-rose">0</dd>
-              </div>
-            </dl>
+            </div>
           </div>
+
+          <!-- visual side: framed scrolling proof column -->
+          <aside class="what-proof" aria-hidden="true">
+            <div class="what-proof-head">
+              <span class="what-proof-dot"></span>
+              <span>live · last hour</span>
+              <span class="what-proof-count">247 completed</span>
+            </div>
+            <div class="what-proof-track">
+              <ul class="what-proof-list">
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-blue">◎</span>
+                  <span class="what-proof-text">found a stained glass window from 1887</span>
+                  <span class="what-proof-time">2m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-green">▲</span>
+                  <span class="what-proof-text">200 stairs · 3:42</span>
+                  <span class="what-proof-time">5m</span>
+                </li>
+                <li class="what-proof-row what-proof-row-win">
+                  <span class="what-proof-cat what-proof-cat-pink">✦</span>
+                  <span class="what-proof-text">sketched a stranger on the L train</span>
+                  <span class="what-proof-time">7m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-orange">◈</span>
+                  <span class="what-proof-text">got a real laugh from a barista</span>
+                  <span class="what-proof-time">11m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-blue">◎</span>
+                  <span class="what-proof-text">building older than 1900 — done</span>
+                  <span class="what-proof-time">14m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-green">▲</span>
+                  <span class="what-proof-text">ran 1.2 km past the bridge</span>
+                  <span class="what-proof-time">18m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-pink">✦</span>
+                  <span class="what-proof-text">2-line poem about the rain</span>
+                  <span class="what-proof-time">22m</span>
+                </li>
+                <li class="what-proof-row">
+                  <span class="what-proof-cat what-proof-cat-orange">◈</span>
+                  <span class="what-proof-text">song rec from the corner store guy</span>
+                  <span class="what-proof-time">28m</span>
+                </li>
+              </ul>
+            </div>
+            <div class="what-proof-foot">
+              <span class="what-proof-foot-dot"></span>
+              <span>and 239 more in the last hour</span>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -257,7 +348,6 @@
           <!-- bento grid — varied tile sizes, each its own visual flavor -->
           <div class="preview-bento reveal-stagger">
             <div class="bento bento-feature">
-              <span class="bento-num">01 · pick</span>
               <p class="bento-title">One-tap missions</p>
               <p class="bento-text">Pick a vibe, pick a difficulty. The AI cooks up the dare — you chase it.</p>
               <div class="diff-row" aria-hidden="true">
@@ -378,148 +468,270 @@
       </section>
 
       <!-- ============================================================== -->
-      <!-- MODES — color-tinted backgrounds (each its own accent)          -->
+      <!-- MODES — three asymmetric cards, each with its own visual story  -->
       <!-- ============================================================== -->
-      <section id="modes" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-12 max-w-[820px] md:mb-16">
-          <div class="eyebrow mb-5"><span class="dash"></span><span>three ways to play</span></div>
-          <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-            Solo. <span class="text-cat-blue">Duel.</span> <span class="text-amber">Crew.</span>
-          </h2>
-          <p class="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
-            Same engine. Three different stakes.
-          </p>
+      <section id="modes" class="modes-section reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="modes-head">
+          <div class="modes-head-text">
+            <div class="eyebrow eyebrow-amber mb-5"><span class="dash"></span><span>three ways to play</span></div>
+            <h2 class="modes-headline">
+              Solo. <span class="text-cat-blue">Duel.</span> <span class="text-amber">Crew.</span>
+            </h2>
+            <p class="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
+              Same engine. Three different stakes.
+            </p>
+          </div>
+          <div class="modes-head-counter" aria-hidden="true">
+            <span class="modes-counter-cell"><span class="modes-counter-num">1</span><span class="modes-counter-lbl">solo</span></span>
+            <span class="modes-counter-cell"><span class="modes-counter-num">2</span><span class="modes-counter-lbl">duel</span></span>
+            <span class="modes-counter-cell"><span class="modes-counter-num">N</span><span class="modes-counter-lbl">crew</span></span>
+          </div>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          <article class="mode-card mode-blue flex flex-col gap-5 rounded-[20px] border p-6">
-            <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">◎</span>
-              <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">01</span>
-            </div>
-            <div>
-              <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Solo missions</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
-                Summon an AI-generated dare tuned to your level. Pick easy, medium, or hard. Beat the timer, collect the XP.
+        <div class="modes-grid reveal-stagger">
+          <!-- SOLO — feature card, mini phone screen -->
+          <article class="mode-card mode-card-v2 mode-blue mode-card-solo">
+            <div class="mode-num-big" aria-hidden="true">01</div>
+            <div class="mode-content">
+              <h3 class="mode-title">Solo missions</h3>
+              <p class="mode-text">
+                Summon an AI-generated dare tuned to your level. Beat the timer. Collect the XP.
               </p>
+              <div class="mode-tagline-pill">
+                <span class="mode-dot"></span>
+                <span>play anywhere</span>
+              </div>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
-              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
-              <span>play anywhere</span>
+            <div class="mode-visual mode-visual-solo" aria-hidden="true">
+              <div class="mini-screen">
+                <div class="mini-screen-eyebrow"><span class="mini-dot mini-dot-blue"></span>EXPLORATION</div>
+                <div class="mini-screen-title">Find a building older than 1900</div>
+                <div class="mini-screen-timer">
+                  <span class="mini-timer-num">22:14</span>
+                  <span class="mini-timer-bar"><span class="mini-timer-fill" style="--w:46%"></span></span>
+                </div>
+                <div class="mini-screen-cta">I'm on it →</div>
+              </div>
             </div>
           </article>
 
-          <article class="mode-card mode-rose flex flex-col gap-5 rounded-[20px] border p-6">
-            <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">⚔</span>
-              <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">02</span>
-            </div>
-            <div>
-              <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Duels</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
+          <!-- DUEL — split-screen versus -->
+          <article class="mode-card mode-card-v2 mode-rose mode-card-duel">
+            <div class="mode-num-big" aria-hidden="true">02</div>
+            <div class="mode-content">
+              <h3 class="mode-title">Duels</h3>
+              <p class="mode-text">
                 Head-to-head with a friend — or a stranger across town. Both submit proof. Voters pick the winner.
               </p>
+              <div class="mode-tagline-pill">
+                <span class="mode-dot"></span>
+                <span>1 v 1, no excuses</span>
+              </div>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
-              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
-              <span>1 v 1, no excuses</span>
+            <div class="mode-visual mode-visual-duel" aria-hidden="true">
+              <div class="duel-side duel-side-a">
+                <span class="duel-ava ava-1">J</span>
+                <span class="duel-name">jamie</span>
+                <span class="duel-score">2.1k</span>
+              </div>
+              <div class="duel-vs">VS</div>
+              <div class="duel-side duel-side-b">
+                <span class="duel-ava ava-2">M</span>
+                <span class="duel-name">you</span>
+                <span class="duel-score duel-score-win">1.9k</span>
+              </div>
             </div>
           </article>
 
-          <article class="mode-card mode-amber flex flex-col gap-5 rounded-[20px] border p-6">
-            <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">◈</span>
-              <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">03</span>
-            </div>
-            <div>
-              <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Group FFAs</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
-                Your crew, one challenge, one winner. Bragging rights for a week and a spot on the group leaderboard.
+          <!-- CREW — leaderboard rows -->
+          <article class="mode-card mode-card-v2 mode-amber mode-card-crew">
+            <div class="mode-num-big" aria-hidden="true">03</div>
+            <div class="mode-content">
+              <h3 class="mode-title">Group FFAs</h3>
+              <p class="mode-text">
+                Your crew, one challenge, one winner. Bragging rights for a week. A spot on the group leaderboard.
               </p>
+              <div class="mode-tagline-pill">
+                <span class="mode-dot"></span>
+                <span>everyone in</span>
+              </div>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
-              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
-              <span>everyone in</span>
+            <div class="mode-visual mode-visual-crew" aria-hidden="true">
+              <div class="crew-row crew-row-1"><span class="crew-rk">1</span><span class="crew-ava ava-1">J</span><span class="crew-name">jamie</span><span class="crew-xp">2.1k</span></div>
+              <div class="crew-row crew-row-2"><span class="crew-rk">2</span><span class="crew-ava ava-2">M</span><span class="crew-name">mira</span><span class="crew-xp">1.9k</span></div>
+              <div class="crew-row crew-row-3 crew-row-you"><span class="crew-rk">3</span><span class="crew-ava ava-3">★</span><span class="crew-name">you</span><span class="crew-xp">1.4k</span></div>
+              <div class="crew-row crew-row-4"><span class="crew-rk">4</span><span class="crew-ava ava-4">L</span><span class="crew-name">leo</span><span class="crew-xp">1.1k</span></div>
             </div>
           </article>
         </div>
       </section>
 
       <!-- ============================================================== -->
-      <!-- CATEGORIES — bigger color tiles with example missions inline    -->
+      <!-- CATEGORIES — asymmetric bento: 1 hero + 3 supporting tiles      -->
       <!-- ============================================================== -->
-      <section id="categories" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-12 grid grid-cols-1 items-end gap-6 md:mb-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+      <section id="categories" class="categories-section reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="cats-head">
           <div>
-            <div class="eyebrow mb-5"><span class="dash"></span><span>all kinds of stakes</span></div>
-            <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-              Four categories.<br /><span class="text-grad-rose">Infinite missions.</span>
+            <div class="eyebrow eyebrow-green mb-5"><span class="dash"></span><span>all kinds of stakes</span></div>
+            <h2 class="cats-headline">
+              Four categories.<br />
+              <span class="cats-headline-emph">
+                Infinite missions
+                <span class="cats-headline-mark" aria-hidden="true"></span>
+              </span>.
             </h2>
           </div>
-          <p class="m-0 max-w-[44ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base lg:justify-self-end">
+          <p class="cats-lede">
             Whatever kind of dare gets you moving. The AI mixes and matches so the next mission never repeats.
           </p>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-4">
-          <div class="cat-tile cat-tile-blue">
-            <span class="cat-glyph">◎</span>
-            <h3 class="cat-tile-title">Exploration</h3>
-            <p class="cat-tile-text">Find a place you've never been. Document it.</p>
-            <p class="cat-tile-example">"Find a building older than 1900 within 1 km"</p>
-          </div>
-          <div class="cat-tile cat-tile-pink">
-            <span class="cat-glyph">✦</span>
-            <h3 class="cat-tile-title">Creative</h3>
-            <p class="cat-tile-text">Make something. Anywhere. Ten minutes.</p>
-            <p class="cat-tile-example">"Sketch the next stranger you see — 3 minutes"</p>
-          </div>
-          <div class="cat-tile cat-tile-green">
-            <span class="cat-glyph">▲</span>
-            <h3 class="cat-tile-title">Physical</h3>
-            <p class="cat-tile-text">Move your body. Sweat is the receipt.</p>
-            <p class="cat-tile-example">"Run to the nearest bench. Do 20 push-ups"</p>
-          </div>
-          <div class="cat-tile cat-tile-orange">
-            <span class="cat-glyph">◈</span>
-            <h3 class="cat-tile-title">Social</h3>
-            <p class="cat-tile-text">Talk to a stranger. Make someone laugh.</p>
-            <p class="cat-tile-example">"Compliment a stranger. Get a real smile back"</p>
-          </div>
+        <div class="cats-bento reveal-stagger">
+          <!-- Hero tile: Exploration with map snippet -->
+          <article class="cat-tile-v2 cat-hero cat-tile-blue">
+            <div class="cat-tile-head">
+              <span class="cat-glyph-v2">◎</span>
+              <span class="cat-meta-pill">~24 min avg</span>
+            </div>
+            <h3 class="cat-tile-title-v2">Exploration</h3>
+            <p class="cat-tile-text-v2">Find a place you've never been. Document the proof.</p>
+            <ul class="cat-examples">
+              <li class="cat-ex-row"><span class="cat-ex-arrow">↳</span>"Find a building older than 1900 within 1 km"</li>
+              <li class="cat-ex-row"><span class="cat-ex-arrow">↳</span>"Photograph a door painted any shade of green"</li>
+              <li class="cat-ex-row"><span class="cat-ex-arrow">↳</span>"A stained glass window. Anywhere."</li>
+            </ul>
+            <div class="cat-mini-map" aria-hidden="true">
+              <div class="cat-map-grid"></div>
+              <span class="cat-map-pin cat-map-pin-1"></span>
+              <span class="cat-map-pin cat-map-pin-2"></span>
+              <span class="cat-map-pin cat-map-pin-you">YOU</span>
+              <span class="cat-map-radius"></span>
+            </div>
+          </article>
+
+          <!-- Creative -->
+          <article class="cat-tile-v2 cat-tile-pink cat-supporting">
+            <div class="cat-tile-head">
+              <span class="cat-glyph-v2">✦</span>
+              <span class="cat-meta-pill">~10 min</span>
+            </div>
+            <h3 class="cat-tile-title-v2">Creative</h3>
+            <p class="cat-tile-text-v2">Make something. Anywhere. Ten minutes.</p>
+            <p class="cat-tile-example-v2">
+              <span class="cat-ex-quote">"</span>Sketch the next stranger you see<span class="cat-ex-quote">"</span>
+            </p>
+            <div class="cat-decor cat-decor-creative" aria-hidden="true">
+              <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                <path d="M2 20 Q 18 5, 30 20 T 60 20 T 96 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
+              </svg>
+            </div>
+          </article>
+
+          <!-- Physical -->
+          <article class="cat-tile-v2 cat-tile-green cat-supporting">
+            <div class="cat-tile-head">
+              <span class="cat-glyph-v2">▲</span>
+              <span class="cat-meta-pill">~12 min</span>
+            </div>
+            <h3 class="cat-tile-title-v2">Physical</h3>
+            <p class="cat-tile-text-v2">Move your body. Sweat is the receipt.</p>
+            <p class="cat-tile-example-v2">
+              <span class="cat-ex-quote">"</span>Nearest bench, 20 push-ups<span class="cat-ex-quote">"</span>
+            </p>
+            <div class="cat-decor cat-decor-physical" aria-hidden="true">
+              <span class="phys-bar phys-bar-1"></span>
+              <span class="phys-bar phys-bar-2"></span>
+              <span class="phys-bar phys-bar-3"></span>
+              <span class="phys-bar phys-bar-4"></span>
+              <span class="phys-bar phys-bar-5"></span>
+            </div>
+          </article>
+
+          <!-- Social -->
+          <article class="cat-tile-v2 cat-tile-orange cat-supporting">
+            <div class="cat-tile-head">
+              <span class="cat-glyph-v2">◈</span>
+              <span class="cat-meta-pill">~5 min</span>
+            </div>
+            <h3 class="cat-tile-title-v2">Social</h3>
+            <p class="cat-tile-text-v2">Talk to a stranger. Make someone laugh.</p>
+            <p class="cat-tile-example-v2">
+              <span class="cat-ex-quote">"</span>Compliment a stranger. Get a real smile back<span class="cat-ex-quote">"</span>
+            </p>
+            <div class="cat-decor cat-decor-social" aria-hidden="true">
+              <span class="social-bubble social-bubble-1">hi</span>
+              <span class="social-bubble social-bubble-2">!</span>
+            </div>
+          </article>
         </div>
       </section>
 
       <!-- ============================================================== -->
-      <!-- FLOW — three steps, rose-tinted backgrounds                     -->
+      <!-- FLOW — connected steps with mini illustrations                  -->
       <!-- ============================================================== -->
-      <section id="flow" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-12 max-w-[820px] md:mb-16">
-          <div class="eyebrow mb-5"><span class="dash"></span><span>a mission, end to end</span></div>
-          <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-            Three steps. <span class="text-grad-rose">No grinding.</span>
+      <section id="flow" class="flow-section reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <div class="flow-head">
+          <div class="eyebrow eyebrow-pink mb-5"><span class="dash"></span><span>a mission, end to end</span></div>
+          <h2 class="flow-headline">
+            Three steps. <span class="flow-headline-strike">No grinding</span>.
           </h2>
+          <p class="flow-lede">From summon to trophy in one short loop. No menus to dig through, no streaks you have to babysit.</p>
         </div>
 
-        <ol class="flow-list reveal-stagger relative m-0 grid grid-cols-1 gap-5 p-0 md:grid-cols-3 md:gap-6">
-          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
-            <span class="flow-step-num">01</span>
-            <div>
-              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">AI summons a challenge</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Tuned to category and difficulty. Always different. Never the same dare twice.</p>
+        <ol class="flow-list-v2 reveal-stagger" aria-label="How a mission works">
+          <li class="flow-step-v2 flow-step-1">
+            <div class="flow-step-side">
+              <span class="flow-step-num-v2">01</span>
+              <span class="flow-step-tick" aria-hidden="true"></span>
+            </div>
+            <div class="flow-step-body">
+              <span class="flow-step-eyebrow">summon</span>
+              <h3 class="flow-step-title">AI cooks up a challenge</h3>
+              <p class="flow-step-text">Tuned to category, difficulty, and where you are. Always different. Never the same dare twice.</p>
+              <div class="flow-illus flow-illus-1" aria-hidden="true">
+                <span class="flow-chip flow-chip-1">EXPLORATION</span>
+                <span class="flow-chip flow-chip-2">EASY</span>
+                <span class="flow-chip flow-chip-3">22 min</span>
+              </div>
             </div>
           </li>
-          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
-            <span class="flow-step-num">02</span>
-            <div>
-              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">You go do it</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Snap a photo as proof. RAVLE verifies you actually showed up — no fakes, no shortcuts.</p>
+
+          <li class="flow-step-v2 flow-step-2">
+            <div class="flow-step-side">
+              <span class="flow-step-num-v2">02</span>
+              <span class="flow-step-tick" aria-hidden="true"></span>
+            </div>
+            <div class="flow-step-body">
+              <span class="flow-step-eyebrow">do it</span>
+              <h3 class="flow-step-title">You go and actually do it</h3>
+              <p class="flow-step-text">Snap a photo as proof. RAVLE verifies you actually showed up — geotagged, timestamped, no shortcuts.</p>
+              <div class="flow-illus flow-illus-2" aria-hidden="true">
+                <span class="flow-camera">
+                  <span class="flow-camera-flash"></span>
+                </span>
+                <span class="flow-verify-pill">✓ verified</span>
+              </div>
             </div>
           </li>
-          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
-            <span class="flow-step-num">03</span>
-            <div>
-              <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">XP, streaks, trophies</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
+
+          <li class="flow-step-v2 flow-step-3">
+            <div class="flow-step-side">
+              <span class="flow-step-num-v2">03</span>
+              <span class="flow-step-tick flow-step-tick-final" aria-hidden="true"></span>
+            </div>
+            <div class="flow-step-body">
+              <span class="flow-step-eyebrow">earn</span>
+              <h3 class="flow-step-title">XP, streaks, trophies</h3>
+              <p class="flow-step-text">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
+              <div class="flow-illus flow-illus-3" aria-hidden="true">
+                <span class="flow-xp-burst">+150<small> XP</small></span>
+                <span class="flow-streak">🔥 7d</span>
+                <span class="flow-coin" aria-label="trophy">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                    <path d="M7 4h10v1.5h2.5A1.5 1.5 0 0 1 21 7v2a4 4 0 0 1-4 4h-.36A5.002 5.002 0 0 1 13 16.9V19h3v2H8v-2h3v-2.1A5.002 5.002 0 0 1 7.36 13H7a4 4 0 0 1-4-4V7a1.5 1.5 0 0 1 1.5-1.5H7V4Zm0 3H4.5V9A2.5 2.5 0 0 0 7 11.5V7Zm10 0v4.5A2.5 2.5 0 0 0 19.5 9V7H17Z"/>
+                  </svg>
+                </span>
+              </div>
             </div>
           </li>
         </ol>
@@ -529,28 +741,55 @@
       <!-- CLOSING                                                         -->
       <!-- ============================================================== -->
       <section id="outside" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="relative overflow-hidden rounded-[28px] border border-line bg-ink p-8 text-white shadow-[0_24px_56px_-16px_rgba(0,0,0,0.35)] md:p-14 lg:p-20">
+        <div class="outside-card relative overflow-hidden rounded-[28px] border border-line bg-ink p-8 text-white shadow-[0_24px_56px_-16px_rgba(0,0,0,0.35)] md:p-14 lg:p-20">
           <div class="cta-blob-1" aria-hidden="true"></div>
           <div class="cta-blob-2" aria-hidden="true"></div>
 
-          <div class="relative">
-            <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
-              <span class="inline-block h-1 w-7 bg-primary"></span>
-              <span>built for the outside</span>
+          <div class="outside-grid relative">
+            <div class="outside-content">
+              <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
+                <span class="inline-block h-1 w-7 bg-primary"></span>
+                <span>built for the outside</span>
+              </div>
+              <h2 class="m-0 max-w-[18ch] font-display text-[clamp(36px,7vw,80px)] font-extrabold leading-[0.92] tracking-[-0.03em]">
+                Earn it <span class="text-grad-rose">offline.</span>
+              </h2>
+              <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-white/70 lg:text-[17px]">
+                No infinite scroll. No watching other people live their lives. RAVLE is a phone game you only play when you put the phone down.
+              </p>
+              <a
+                href="#hero"
+                class="group mt-8 inline-flex items-center gap-2 rounded-[16px] bg-primary px-7 py-4 font-display text-[15px] font-semibold text-white transition-[transform,background] hover:bg-primary-deep active:scale-[0.98] md:text-[16px] lg:rounded-[18px] lg:px-9 lg:py-5 lg:text-[17px]"
+              >
+                <span>Get on the list</span>
+                <span class="transition-transform group-hover:-translate-y-0.5" aria-hidden="true">↑</span>
+              </a>
             </div>
-            <h2 class="m-0 max-w-[18ch] font-display text-[clamp(36px,7vw,80px)] font-extrabold leading-[0.92] tracking-[-0.03em]">
-              Earn it <span class="text-grad-rose">offline.</span>
-            </h2>
-            <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-white/70 lg:text-[17px]">
-              No infinite scroll. No watching other people live their lives. RAVLE is a phone game you only play when you put the phone down.
-            </p>
-            <a
-              href="#hero"
-              class="group mt-8 inline-flex items-center gap-2 rounded-[16px] bg-primary px-7 py-4 font-display text-[15px] font-semibold text-white transition-[transform,background] hover:bg-primary-deep active:scale-[0.98] md:text-[16px] lg:rounded-[18px] lg:px-9 lg:py-5 lg:text-[17px]"
-            >
-              <span>Get on the list</span>
-              <span class="transition-transform group-hover:-translate-y-0.5" aria-hidden="true">↑</span>
-            </a>
+
+            <aside class="outside-receipt" aria-hidden="true">
+              <div class="receipt-head">
+                <span class="receipt-dot"></span>
+                <span class="receipt-label">today's receipt</span>
+              </div>
+              <div class="receipt-row">
+                <span>screen time</span>
+                <span class="receipt-num receipt-num-zero">00:14</span>
+              </div>
+              <div class="receipt-row">
+                <span>missions cleared</span>
+                <span class="receipt-num">3</span>
+              </div>
+              <div class="receipt-row">
+                <span>duels won</span>
+                <span class="receipt-num">2</span>
+              </div>
+              <div class="receipt-divider"></div>
+              <div class="receipt-row receipt-total">
+                <span>xp earned</span>
+                <span class="receipt-num receipt-total-num">+450</span>
+              </div>
+              <div class="receipt-foot">— phone stayed in pocket —</div>
+            </aside>
           </div>
         </div>
       </section>
