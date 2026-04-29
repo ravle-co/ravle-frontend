@@ -25,22 +25,21 @@
 
     <main class="relative mx-auto w-full max-w-[1280px] px-5 md:px-12 xl:px-20">
       <!-- ============================================================== -->
-      <!-- HERO — full viewport sign-up                                    -->
+      <!-- HERO                                                            -->
       <!-- ============================================================== -->
       <section
         id="hero"
         class="relative flex min-h-[100dvh] flex-col gap-6 py-5 md:py-8 lg:gap-12 xl:py-10"
       >
-        <!-- Subtle grid pattern (desktop only) -->
         <div class="bg-grid -z-10 hidden lg:block" aria-hidden="true"></div>
 
-        <!-- Decorative orbits — desktop only -->
+        <!-- orbits -->
         <div class="pointer-events-none absolute left-1/2 top-[14%] -z-10 hidden h-[340px] w-[340px] -translate-x-1/2 md:block lg:left-auto lg:right-[2%] lg:top-1/2 lg:h-[660px] lg:w-[660px] lg:-translate-x-0 lg:-translate-y-1/2" aria-hidden="true">
           <div class="absolute inset-0 rounded-full border border-black/[0.08] animate-orbit-slow motion-reduce:animate-none">
             <span class="absolute left-1/2 top-0 -ml-1.5 -mt-1.5 h-3 w-3 rounded-full bg-primary shadow-[0_0_18px_rgba(225,29,72,0.6)]"></span>
           </div>
           <div class="absolute inset-[28px] rounded-full border border-black/[0.08] animate-orbit-fast motion-reduce:animate-none lg:inset-[60px]">
-            <span class="absolute right-0 top-1/2 -mr-[5px] -mt-[5px] h-2.5 w-2.5 rounded-full bg-[color:var(--color-cat-exploration)] shadow-[0_0_14px_rgba(37,99,235,0.5)]"></span>
+            <span class="orbit-dot-blue absolute right-0 top-1/2 -mr-[5px] -mt-[5px] h-2.5 w-2.5 rounded-full"></span>
           </div>
           <div class="absolute inset-[56px] rounded-full border border-dashed border-black/[0.08] animate-orbit-dashed motion-reduce:animate-none lg:inset-[120px]"></div>
         </div>
@@ -66,23 +65,18 @@
               AI-generated challenges, head-to-head duels with friends or strangers, group FFAs. Step outside and earn it.
             </p>
 
-            <!-- Trust strip -->
             <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
               <span class="inline-flex items-center gap-2">
-                <span class="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-cat-exploration)]"></span>
-                exploration
+                <span class="cat-dot cat-dot-blue"></span>exploration
               </span>
               <span class="inline-flex items-center gap-2">
-                <span class="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-cat-creative)]"></span>
-                creative
+                <span class="cat-dot cat-dot-pink"></span>creative
               </span>
               <span class="inline-flex items-center gap-2">
-                <span class="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-cat-physical)]"></span>
-                physical
+                <span class="cat-dot cat-dot-green"></span>physical
               </span>
               <span class="inline-flex items-center gap-2">
-                <span class="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-cat-social)]"></span>
-                social
+                <span class="cat-dot cat-dot-orange"></span>social
               </span>
             </div>
           </section>
@@ -162,7 +156,6 @@
           </section>
         </div>
 
-        <!-- Scroll cue -->
         <a
           href="#what"
           class="group mx-auto mb-2 mt-2 flex flex-col items-center gap-1.5 self-center font-mono text-[10px] uppercase tracking-[0.3em] text-ink-dim transition-colors hover:text-ink"
@@ -177,34 +170,33 @@
       </section>
 
       <!-- ============================================================== -->
-      <!-- LIVE TICKER — example AI-generated missions sliding by          -->
+      <!-- LIVE TICKER                                                     -->
       <!-- ============================================================== -->
       <section class="ticker relative -mx-5 overflow-hidden border-y border-line bg-card md:-mx-12 xl:-mx-20" aria-label="Example missions">
-        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-page to-transparent md:w-24"></div>
-        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-page to-transparent md:w-24"></div>
+        <div class="ticker-fade-l pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-24"></div>
+        <div class="ticker-fade-r pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-24"></div>
         <div class="ticker-track py-3.5 md:py-4">
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#2563eb">◎</span>Find a building older than 1900 within 1 km</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#db2777">✦</span>Sketch the next stranger you see — 3 minutes</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#16a34a">▲</span>Run to the nearest bench. Do 20 push-ups</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#ea580c">◈</span>Compliment a stranger. Get a real smile back</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#2563eb">◎</span>Photograph something blue you've never noticed</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#db2777">✦</span>Write a 2-line poem about the sky right now</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#16a34a">▲</span>Take 200 stairs in under 4 minutes</span>
-          <span class="ticker-pill"><span class="ticker-cat" style="background:#ea580c">◈</span>Ask someone for a song recommendation</span>
-          <!-- duplicates for seamless loop -->
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#2563eb">◎</span>Find a building older than 1900 within 1 km</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#db2777">✦</span>Sketch the next stranger you see — 3 minutes</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#16a34a">▲</span>Run to the nearest bench. Do 20 push-ups</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#ea580c">◈</span>Compliment a stranger. Get a real smile back</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#2563eb">◎</span>Photograph something blue you've never noticed</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#db2777">✦</span>Write a 2-line poem about the sky right now</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#16a34a">▲</span>Take 200 stairs in under 4 minutes</span>
-          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#ea580c">◈</span>Ask someone for a song recommendation</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-blue">◎</span>Find a building older than 1900 within 1 km</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-pink">✦</span>Sketch the next stranger you see — 3 minutes</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-green">▲</span>Run to the nearest bench. Do 20 push-ups</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-orange">◈</span>Compliment a stranger. Get a real smile back</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-blue">◎</span>Photograph something blue you've never noticed</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-pink">✦</span>Write a 2-line poem about the sky right now</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-green">▲</span>Take 200 stairs in under 4 minutes</span>
+          <span class="ticker-pill"><span class="ticker-cat ticker-cat-orange">◈</span>Ask someone for a song recommendation</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-blue">◎</span>Find a building older than 1900 within 1 km</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-pink">✦</span>Sketch the next stranger you see — 3 minutes</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-green">▲</span>Run to the nearest bench. Do 20 push-ups</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-orange">◈</span>Compliment a stranger. Get a real smile back</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-blue">◎</span>Photograph something blue you've never noticed</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-pink">✦</span>Write a 2-line poem about the sky right now</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-green">▲</span>Take 200 stairs in under 4 minutes</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat ticker-cat-orange">◈</span>Ask someone for a song recommendation</span>
         </div>
       </section>
 
       <!-- ============================================================== -->
-      <!-- WHAT — concept                                                  -->
+      <!-- WHAT — concept with INLINE stats (no card grid)                 -->
       <!-- ============================================================== -->
       <section id="what" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
@@ -214,98 +206,169 @@
               An app that pushes you <span class="text-grad-rose">off the couch.</span>
             </h2>
           </div>
-          <div class="flex flex-col gap-5 lg:pt-3">
+          <div class="flex flex-col gap-6 lg:pt-3">
             <p class="m-0 font-display text-[clamp(18px,2.4vw,24px)] font-medium leading-[1.4] tracking-[-0.01em] text-ink-body">
               RAVLE flips gaming on its head. Every challenge happens in the real world — your street, your park, your city. There's no infinite scroll, no watching. Just dares the AI cooks up, and the moves you actually make.
             </p>
-            <ul class="m-0 grid grid-cols-2 gap-3 p-0 sm:grid-cols-4">
-              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
-                <div class="font-display text-[28px] font-extrabold leading-none text-ink">1k+</div>
-                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">missions</div>
-              </li>
-              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
-                <div class="font-display text-[28px] font-extrabold leading-none text-ink">4</div>
-                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">categories</div>
-              </li>
-              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
-                <div class="font-display text-[28px] font-extrabold leading-none text-ink">3</div>
-                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">play modes</div>
-              </li>
-              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
-                <div class="font-display text-[28px] font-extrabold leading-none text-primary">0</div>
-                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">screen time</div>
-              </li>
-            </ul>
+            <!-- inline stats row, no boxes -->
+            <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 sm:grid-cols-4">
+              <div>
+                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">missions</dt>
+                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">1k<span class="text-primary">+</span></dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">categories</dt>
+                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">4</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">play modes</dt>
+                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-ink">3</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">screen time</dt>
+                <dd class="mt-1 font-display text-[34px] font-extrabold leading-none tracking-[-0.02em] text-grad-rose">0</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
       <!-- ============================================================== -->
-      <!-- PREVIEW — phone frame with placeholder image                    -->
+      <!-- PREVIEW — bento grid + tilted phone with floating UI cards     -->
       <!-- ============================================================== -->
-      <section id="preview" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="relative overflow-hidden rounded-[28px] border border-line bg-card p-8 md:p-14 lg:p-20">
-          <!-- soft accent blobs -->
-          <div class="pointer-events-none absolute -left-32 -top-32 h-[320px] w-[320px] rounded-full bg-primary/15 blur-[100px]" aria-hidden="true"></div>
-          <div class="pointer-events-none absolute -bottom-32 -right-32 h-[320px] w-[320px] rounded-full bg-amber/20 blur-[100px]" aria-hidden="true"></div>
+      <section id="preview" class="preview-section reveal relative scroll-mt-12 py-20 md:py-28 lg:py-36">
+        <!-- soft gradient blobs behind the phone -->
+        <div class="preview-blob-wrap" aria-hidden="true">
+          <div class="preview-blob-1"></div>
+          <div class="preview-blob-2"></div>
+        </div>
 
-          <div class="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-16">
-            <div>
-              <div class="eyebrow mb-5"><span class="dash"></span><span>see it in action</span></div>
-              <h2 class="m-0 font-display text-[clamp(34px,5.2vw,58px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-                A phone game you only play <span class="text-grad-rose">when you put the phone down.</span>
-              </h2>
-              <p class="mt-5 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
-                Open the app. Pick a category. The AI hands you a challenge tuned to where you are and what you're up for. Photo proof, instant XP, friends watching the leaderboard.
-              </p>
-              <ul class="mt-6 grid grid-cols-1 gap-3 text-[14.5px] text-ink-body sm:grid-cols-2">
-                <li class="flex items-start gap-3 rounded-[14px] border border-line bg-page p-3.5">
-                  <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-[10px] bg-primary-soft font-display text-primary">⚡</span>
-                  <span><strong class="font-semibold text-ink">One-tap missions.</strong> Easy, medium, or hard — your call.</span>
-                </li>
-                <li class="flex items-start gap-3 rounded-[14px] border border-line bg-page p-3.5">
-                  <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-[10px] bg-primary-soft font-display text-primary">📷</span>
-                  <span><strong class="font-semibold text-ink">Real-world proof.</strong> Snap it. Verified, then logged.</span>
-                </li>
-                <li class="flex items-start gap-3 rounded-[14px] border border-line bg-page p-3.5">
-                  <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-[10px] bg-primary-soft font-display text-primary">🔥</span>
-                  <span><strong class="font-semibold text-ink">Streaks &amp; XP.</strong> Climb levels. Stack rewards.</span>
-                </li>
-                <li class="flex items-start gap-3 rounded-[14px] border border-line bg-page p-3.5">
-                  <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-[10px] bg-primary-soft font-display text-primary">⚔</span>
-                  <span><strong class="font-semibold text-ink">Duel anyone.</strong> Friends, strangers, the leaderboard.</span>
-                </li>
-              </ul>
+        <div class="preview-grid relative">
+          <div class="preview-head">
+            <div class="eyebrow mb-5"><span class="dash"></span><span>see it in action</span></div>
+            <h2 class="m-0 font-display text-[clamp(40px,6vw,72px)] font-extrabold leading-[0.92] tracking-[-0.03em] text-ink">
+              A phone game you only play <span class="text-grad-rose">when you put the phone down.</span>
+            </h2>
+            <p class="mt-6 max-w-[52ch] text-[16px] leading-[1.65] text-ink-dim">
+              Open the app. Pick a category. The AI hands you a challenge tuned to where you are and what you're up for.
+            </p>
+          </div>
+
+          <!-- bento grid — varied tile sizes, each its own visual flavor -->
+          <div class="preview-bento reveal-stagger">
+            <div class="bento bento-feature">
+              <span class="bento-num">01 · pick</span>
+              <p class="bento-title">One-tap missions</p>
+              <p class="bento-text">Pick a vibe, pick a difficulty. The AI cooks up the dare — you chase it.</p>
+              <div class="diff-row" aria-hidden="true">
+                <span class="diff-pill">easy</span>
+                <span class="diff-pill is-active">medium</span>
+                <span class="diff-pill">hard</span>
+              </div>
             </div>
 
-            <div class="relative flex items-center justify-center">
-              <!-- floating accents around the phone -->
-              <span class="phone-orbit-dot hidden lg:flex" style="top:8%;left:-6%;animation-delay:-1.5s" aria-hidden="true">◎</span>
-              <span class="phone-orbit-dot hidden lg:flex" style="bottom:14%;right:-4%;animation-delay:-3s;color:var(--color-cat-physical)" aria-hidden="true">▲</span>
-              <span class="phone-orbit-dot hidden md:flex lg:hidden" style="top:6%;right:6%" aria-hidden="true">⚡</span>
+            <div class="bento bento-proof">
+              <span class="bento-glyph bento-glyph-blue">◎</span>
+              <p class="bento-title">Photo proof</p>
+              <p class="bento-text">Snap it. Verified, logged.</p>
+            </div>
 
-              <!-- THE PHONE FRAME — replace .phone-screen-img src to drop in a real screenshot -->
-              <div class="phone-frame">
-                <div class="phone-screen">
-                  <div class="phone-notch" aria-hidden="true"></div>
-                  <!-- Replace the img below with your actual app screenshot. Keep aspect ratio 9:19. -->
-                  <img
-                    class="phone-screen-img"
-                    src=""
-                    alt=""
-                    onerror="this.style.display='none'"
-                  />
-                  <!-- Placeholder shown until a real image is provided -->
-                  <div class="phone-placeholder" aria-hidden="true">
-                    <div class="ph-icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <circle cx="9" cy="9" r="2" />
-                        <path d="M21 15l-5-5L5 21" />
-                      </svg>
+            <div class="bento bento-streak">
+              <div class="streak-flame" aria-hidden="true">7<small>d</small></div>
+              <p class="bento-title">Streaks &amp; XP</p>
+              <p class="bento-text">Climb levels. Stack rewards.</p>
+            </div>
+
+            <div class="bento bento-duel">
+              <div class="duel-avatars" aria-hidden="true">
+                <span class="ava ava-1">J</span>
+                <span class="ava ava-2">M</span>
+                <span class="ava ava-3">+</span>
+              </div>
+              <div class="bento-duel-text">
+                <p class="bento-title">Duel anyone</p>
+                <p class="bento-text">Friends, strangers, the whole leaderboard.</p>
+              </div>
+              <span class="bento-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+
+          <!-- the phone, with floating UI cards that break out of bounds -->
+          <div class="phone-stage">
+            <!-- floating mission card — top-left, overlaps into bento area -->
+            <div class="phone-float phone-float-mission" aria-hidden="true">
+              <div class="float-eyebrow">
+                <span class="float-dot float-dot-blue"></span>
+                <span>EXPLORATION · EASY</span>
+              </div>
+              <p class="float-mission-title">Find a building older than 1900 within 1 km</p>
+              <div class="float-mission-meta">
+                <span class="float-timer">⏱ 22:14</span>
+                <span class="float-xp-pill">+150 XP</span>
+              </div>
+            </div>
+
+            <!-- floating XP burst — right side, sticks out -->
+            <div class="phone-float phone-float-xp" aria-hidden="true">
+              <span class="float-xp-icon">★</span>
+              <span class="float-xp-num">+150</span>
+              <span class="float-xp-label">XP</span>
+            </div>
+
+            <!-- floating mini leaderboard — bottom-left -->
+            <div class="phone-float phone-float-board" aria-hidden="true">
+              <p class="float-board-title">leaderboard · today</p>
+              <div class="float-board-row"><span class="rk">1</span><span class="nm">jamie</span><span class="xp">2.1k</span></div>
+              <div class="float-board-row is-you"><span class="rk">2</span><span class="nm">you</span><span class="xp">1.9k</span></div>
+              <div class="float-board-row"><span class="rk">3</span><span class="nm">alex</span><span class="xp">1.4k</span></div>
+            </div>
+
+            <!-- the phone itself with realistic mock UI -->
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch" aria-hidden="true"></div>
+
+                <div class="phone-ui" aria-hidden="true">
+                  <div class="phone-ui-status">
+                    <span>9:41</span>
+                    <span class="phone-ui-status-icons">
+                      <span class="ui-bar ui-bar-1"></span>
+                      <span class="ui-bar ui-bar-2"></span>
+                      <span class="ui-bar ui-bar-3"></span>
+                      <span class="ui-batt"></span>
+                    </span>
+                  </div>
+
+                  <div class="phone-ui-greeting">
+                    <p class="phone-ui-hello">Hey ✦</p>
+                    <p class="phone-ui-sub">your mission, if you accept it</p>
+                  </div>
+
+                  <div class="phone-ui-card">
+                    <div class="phone-ui-eyebrow">
+                      <span class="phone-ui-cat-dot"></span>
+                      EXPLORATION · EASY
                     </div>
-                    <div class="ph-label">app preview</div>
-                    <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;color:var(--color-ink-faint);text-transform:uppercase;">screenshot pending</div>
+                    <p class="phone-ui-title">Find a building older than 1900 within 1 km</p>
+                    <div class="phone-ui-timer">
+                      <span class="phone-ui-timer-num">22:14</span>
+                      <span class="phone-ui-timer-label">REMAINING</span>
+                    </div>
+                    <button class="phone-ui-cta" tabindex="-1">
+                      <span>I'm on it</span>
+                      <span>→</span>
+                    </button>
+                    <div class="phone-ui-foot">
+                      <span>3 friends watching</span>
+                      <span class="phone-ui-foot-xp">+150 XP</span>
+                    </div>
+                  </div>
+
+                  <div class="phone-ui-tabs">
+                    <span class="phone-ui-tab is-active"></span>
+                    <span class="phone-ui-tab"></span>
+                    <span class="phone-ui-tab"></span>
+                    <span class="phone-ui-tab"></span>
                   </div>
                 </div>
               </div>
@@ -315,68 +378,66 @@
       </section>
 
       <!-- ============================================================== -->
-      <!-- MODES — Solo / Duel / Crew                                      -->
+      <!-- MODES — color-tinted backgrounds (each its own accent)          -->
       <!-- ============================================================== -->
       <section id="modes" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-[720px]">
-            <div class="eyebrow mb-5"><span class="dash"></span><span>three ways to play</span></div>
-            <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-              Solo. <span class="text-[color:var(--color-cat-exploration)]">Duel.</span> <span class="text-amber">Crew.</span>
-            </h2>
-            <p class="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
-              Same engine. Three different stakes.
-            </p>
-          </div>
+        <div class="mb-12 max-w-[820px] md:mb-16">
+          <div class="eyebrow mb-5"><span class="dash"></span><span>three ways to play</span></div>
+          <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
+            Solo. <span class="text-cat-blue">Duel.</span> <span class="text-amber">Crew.</span>
+          </h2>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base">
+            Same engine. Three different stakes.
+          </p>
         </div>
 
         <div class="reveal-stagger grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          <article class="mode-card flex flex-col gap-5 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#2563eb">
+          <article class="mode-card mode-blue flex flex-col gap-5 rounded-[20px] border p-6">
             <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[26px]">◎</span>
+              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">◎</span>
               <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">01</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Solo missions</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
                 Summon an AI-generated dare tuned to your level. Pick easy, medium, or hard. Beat the timer, collect the XP.
               </p>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 rounded-full border bg-page px-3 py-1.5 mode-tagline font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
+            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
               <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>play anywhere</span>
             </div>
           </article>
 
-          <article class="mode-card flex flex-col gap-5 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#e11d48">
+          <article class="mode-card mode-rose flex flex-col gap-5 rounded-[20px] border p-6">
             <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[26px]">⚔</span>
+              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">⚔</span>
               <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">02</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Duels</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
                 Head-to-head with a friend — or a stranger across town. Both submit proof. Voters pick the winner.
               </p>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 rounded-full border bg-page px-3 py-1.5 mode-tagline font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
+            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
               <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>1 v 1, no excuses</span>
             </div>
           </article>
 
-          <article class="mode-card flex flex-col gap-5 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#f59e0b">
+          <article class="mode-card mode-amber flex flex-col gap-5 rounded-[20px] border p-6">
             <div class="flex items-center justify-between">
-              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[26px]">◈</span>
+              <span class="mode-glyph flex h-14 w-14 items-center justify-center rounded-[16px] font-display text-[28px]">◈</span>
               <span class="mode-num font-mono text-[11px] font-bold uppercase tracking-[0.3em]">03</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[24px] font-bold tracking-[-0.01em] text-ink">Group FFAs</h3>
-              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">
+              <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-body">
                 Your crew, one challenge, one winner. Bragging rights for a week and a spot on the group leaderboard.
               </p>
             </div>
-            <div class="mt-auto inline-flex w-fit items-center gap-2 rounded-full border bg-page px-3 py-1.5 mode-tagline font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
+            <div class="mt-auto inline-flex w-fit items-center gap-2 mode-tagline rounded-full px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">
               <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>everyone in</span>
             </div>
@@ -385,14 +446,14 @@
       </section>
 
       <!-- ============================================================== -->
-      <!-- CATEGORIES                                                      -->
+      <!-- CATEGORIES — bigger color tiles with example missions inline    -->
       <!-- ============================================================== -->
       <section id="categories" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-10 grid grid-cols-1 items-end gap-6 md:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+        <div class="mb-12 grid grid-cols-1 items-end gap-6 md:mb-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
           <div>
             <div class="eyebrow mb-5"><span class="dash"></span><span>all kinds of stakes</span></div>
             <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
-              Four categories.<br />Infinite missions.
+              Four categories.<br /><span class="text-grad-rose">Infinite missions.</span>
             </h2>
           </div>
           <p class="m-0 max-w-[44ch] text-[15px] leading-[1.65] text-ink-dim lg:text-base lg:justify-self-end">
@@ -400,35 +461,39 @@
           </p>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          <div class="cat-tile rounded-[18px] border p-5 transition-transform" style="--c:var(--color-cat-exploration)">
-            <span class="cat-glyph mb-4 flex h-11 w-11 items-center justify-center rounded-[12px] font-display text-[20px]">◎</span>
-            <h3 class="m-0 font-display text-[19px] font-bold tracking-[-0.01em] text-ink">Exploration</h3>
-            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Find a place you've never been. Document it.</p>
+        <div class="reveal-stagger grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-4">
+          <div class="cat-tile cat-tile-blue">
+            <span class="cat-glyph">◎</span>
+            <h3 class="cat-tile-title">Exploration</h3>
+            <p class="cat-tile-text">Find a place you've never been. Document it.</p>
+            <p class="cat-tile-example">"Find a building older than 1900 within 1 km"</p>
           </div>
-          <div class="cat-tile rounded-[18px] border p-5 transition-transform" style="--c:var(--color-cat-creative)">
-            <span class="cat-glyph mb-4 flex h-11 w-11 items-center justify-center rounded-[12px] font-display text-[20px]">✦</span>
-            <h3 class="m-0 font-display text-[19px] font-bold tracking-[-0.01em] text-ink">Creative</h3>
-            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Make something. Anywhere. Ten minutes.</p>
+          <div class="cat-tile cat-tile-pink">
+            <span class="cat-glyph">✦</span>
+            <h3 class="cat-tile-title">Creative</h3>
+            <p class="cat-tile-text">Make something. Anywhere. Ten minutes.</p>
+            <p class="cat-tile-example">"Sketch the next stranger you see — 3 minutes"</p>
           </div>
-          <div class="cat-tile rounded-[18px] border p-5 transition-transform" style="--c:var(--color-cat-physical)">
-            <span class="cat-glyph mb-4 flex h-11 w-11 items-center justify-center rounded-[12px] font-display text-[20px]">▲</span>
-            <h3 class="m-0 font-display text-[19px] font-bold tracking-[-0.01em] text-ink">Physical</h3>
-            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Move your body. Sweat is the receipt.</p>
+          <div class="cat-tile cat-tile-green">
+            <span class="cat-glyph">▲</span>
+            <h3 class="cat-tile-title">Physical</h3>
+            <p class="cat-tile-text">Move your body. Sweat is the receipt.</p>
+            <p class="cat-tile-example">"Run to the nearest bench. Do 20 push-ups"</p>
           </div>
-          <div class="cat-tile rounded-[18px] border p-5 transition-transform" style="--c:var(--color-cat-social)">
-            <span class="cat-glyph mb-4 flex h-11 w-11 items-center justify-center rounded-[12px] font-display text-[20px]">◈</span>
-            <h3 class="m-0 font-display text-[19px] font-bold tracking-[-0.01em] text-ink">Social</h3>
-            <p class="mt-1 text-[13px] leading-[1.55] text-ink-dim">Talk to a stranger. Make someone laugh.</p>
+          <div class="cat-tile cat-tile-orange">
+            <span class="cat-glyph">◈</span>
+            <h3 class="cat-tile-title">Social</h3>
+            <p class="cat-tile-text">Talk to a stranger. Make someone laugh.</p>
+            <p class="cat-tile-example">"Compliment a stranger. Get a real smile back"</p>
           </div>
         </div>
       </section>
 
       <!-- ============================================================== -->
-      <!-- FLOW — how a mission works                                      -->
+      <!-- FLOW — three steps, rose-tinted backgrounds                     -->
       <!-- ============================================================== -->
       <section id="flow" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
-        <div class="mb-10 max-w-[720px] md:mb-14">
+        <div class="mb-12 max-w-[820px] md:mb-16">
           <div class="eyebrow mb-5"><span class="dash"></span><span>a mission, end to end</span></div>
           <h2 class="m-0 font-display text-[clamp(36px,6vw,68px)] font-extrabold leading-[0.95] tracking-[-0.025em] text-ink">
             Three steps. <span class="text-grad-rose">No grinding.</span>
@@ -436,25 +501,25 @@
         </div>
 
         <ol class="flow-list reveal-stagger relative m-0 grid grid-cols-1 gap-5 p-0 md:grid-cols-3 md:gap-6">
-          <li class="relative flex flex-col gap-5 rounded-[20px] border border-line bg-card p-7">
+          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
             <span class="flow-step-num">01</span>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">AI summons a challenge</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-dim">Tuned to category and difficulty. Always different. Never the same dare twice.</p>
+              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Tuned to category and difficulty. Always different. Never the same dare twice.</p>
             </div>
           </li>
-          <li class="relative flex flex-col gap-5 rounded-[20px] border border-line bg-card p-7">
+          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
             <span class="flow-step-num">02</span>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">You go do it</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-dim">Snap a photo as proof. RAVLE verifies you actually showed up — no fakes, no shortcuts.</p>
+              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Snap a photo as proof. RAVLE verifies you actually showed up — no fakes, no shortcuts.</p>
             </div>
           </li>
-          <li class="relative flex flex-col gap-5 rounded-[20px] border border-line bg-card p-7">
+          <li class="flow-step relative flex flex-col gap-5 rounded-[20px] p-7">
             <span class="flow-step-num">03</span>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">XP, streaks, trophies</h3>
-              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-dim">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
+              <p class="mt-2.5 text-[14.5px] leading-[1.6] text-ink-body">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
             </div>
           </li>
         </ol>
@@ -465,8 +530,8 @@
       <!-- ============================================================== -->
       <section id="outside" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
         <div class="relative overflow-hidden rounded-[28px] border border-line bg-ink p-8 text-white shadow-[0_24px_56px_-16px_rgba(0,0,0,0.35)] md:p-14 lg:p-20">
-          <div class="pointer-events-none absolute -right-24 -top-24 h-[280px] w-[280px] rounded-full bg-primary/40 blur-[80px]" aria-hidden="true"></div>
-          <div class="pointer-events-none absolute -bottom-24 -left-16 h-[220px] w-[220px] rounded-full bg-amber/30 blur-[80px]" aria-hidden="true"></div>
+          <div class="cta-blob-1" aria-hidden="true"></div>
+          <div class="cta-blob-2" aria-hidden="true"></div>
 
           <div class="relative">
             <div class="mb-5 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
