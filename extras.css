@@ -1138,7 +1138,9 @@
   background: #f59e0b;
   box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
 }
-.hero-wordmark-burst .burst-text { color: #fef3c7; }
+/* legacy: dark-pill version of burst — overridden by the white-pill rules
+   further down. Keep no color here so .burst-text inherits the parent
+   color set on .hero-wordmark-burst (rose at line ~2586). */
 
 @keyframes hero-burst-bob {
   0%, 100% { transform: rotate(-7deg) translateY(0); }
