@@ -42,6 +42,10 @@
   --animate-bounce-down: bounce-down 1.8s ease-in-out infinite;
   --animate-shine: shine 2.4s linear infinite;
   --animate-tick: tick 1.6s ease-in-out infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float-slow: gentle-float 7s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2.6s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 1.6s ease-in-out infinite;
 
   @keyframes orbit {
     from { transform: rotate(0deg); }
@@ -58,6 +62,22 @@
   @keyframes tick {
     0%, 100% { transform: scale(1); }
     50%      { transform: scale(1.18); }
+  }
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.35); opacity: 0.45; }
   }
 }
 
@@ -103,11 +123,6 @@
     pointer-events: none;
   }
 
-  /*
-   * Static gradient backdrop — replaces heavy filter:blur() decorations.
-   * Radial-gradients are GPU-cheap; filter:blur() with 55–110px radius
-   * tanks scrolling performance on mobile.
-   */
   .bg-decor {
     position: fixed;
     inset: 0;
@@ -119,10 +134,6 @@
       radial-gradient(80% 40% at 50% 110%, rgba(225, 29, 72, 0.10), transparent 70%);
   }
 
-  /*
-   * Reveal-on-scroll: starts hidden+offset, observer adds .is-visible.
-   * GPU-friendly: only transform + opacity.
-   */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -157,7 +168,6 @@
     }
   }
 
-  /* Subtle highlight for the scroll cue arrow */
   .scroll-cue-arrow {
     animation: var(--animate-bounce-down);
   }
@@ -165,33 +175,160 @@
     .scroll-cue-arrow { animation: none; }
   }
 
-  /* Numbered step badge */
   .step-num {
     background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
     color: var(--color-primary);
   }
 
-  /* Category tile color hook (set --c on element) */
   .cat-tile {
     --c: var(--color-primary);
     background: color-mix(in oklab, var(--c) 6%, white);
     border-color: color-mix(in oklab, var(--c) 18%, transparent);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
   }
   .cat-tile .cat-glyph {
     color: var(--c);
     background: color-mix(in oklab, var(--c) 12%, white);
   }
+  .cat-tile::after {
+    content: "";
+    position: absolute;
+    inset: -40% -40% auto auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in oklab, var(--c) 22%, transparent) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.32s ease, transform 0.32s ease;
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .cat-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px -14px color-mix(in oklab, var(--c) 35%, transparent);
+    }
+    .cat-tile:hover::after {
+      opacity: 1;
+      transform: translate(-12px, 12px);
+    }
+  }
 
-  /* Mode card subtle gradient border on hover */
   .mode-card {
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    --mode-accent: var(--color-primary);
+    --mode-soft: color-mix(in oklab, var(--mode-accent) 8%, white);
+    --mode-tint: color-mix(in oklab, var(--mode-accent) 16%, white);
+    position: relative;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .mode-card .mode-glyph {
+    color: var(--mode-accent);
+    background: var(--mode-soft);
+    transition: background 0.22s ease, transform 0.22s ease;
+  }
+  .mode-card .mode-dot {
+    background: var(--mode-accent);
+  }
+  .mode-card .mode-num {
+    color: var(--mode-accent);
   }
   @media (hover: hover) {
     .mode-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0, 0, 0, 0.14);
-      box-shadow: 0 12px 36px -16px rgba(0, 0, 0, 0.18),
-                  0 2px 6px rgba(0, 0, 0, 0.04);
+      transform: translateY(-4px);
+      border-color: color-mix(in oklab, var(--mode-accent) 30%, transparent);
+      box-shadow:
+        0 18px 40px -18px color-mix(in oklab, var(--mode-accent) 35%, transparent),
+        0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+    .mode-card:hover .mode-glyph {
+      background: var(--mode-tint);
+      transform: rotate(-4deg) scale(1.05);
+    }
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: var(--animate-marquee);
+    will-change: transform;
+  }
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+  .ticker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding: 8px 14px 8px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    font-size: 13px;
+    color: var(--color-ink-body);
+    white-space: nowrap;
+  }
+  .ticker-pill .ticker-cat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    animation: var(--animate-pulse-dot);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .live-dot { animation: none; }
+  }
+
+  .flow-list { position: relative; }
+  @media (min-width: 768px) {
+    .flow-list::before {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      top: 56px;
+      height: 0;
+      border-top: 2px dashed color-mix(in oklab, var(--color-primary) 28%, transparent);
+      z-index: 0;
+      pointer-events: none;
+    }
+  }
+  .flow-list > li { position: relative; z-index: 1; }
+
+  .float-card {
+    animation: var(--animate-float-slow);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .float-card { animation: none; }
+  }
+
+  .stat-tile {
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+  @media (hover: hover) {
+    .stat-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-line-strong);
+      background: color-mix(in oklab, var(--color-primary) 4%, white);
     }
   }
 }

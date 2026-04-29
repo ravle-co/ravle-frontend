@@ -49,8 +49,8 @@
         <div class="grid flex-1 grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(420px,480px)] lg:gap-16 xl:gap-24">
           <section class="pt-6 lg:max-w-[600px] lg:pt-0">
             <div class="mb-4 inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
-              <span class="inline-block h-1 w-7 bg-primary" aria-hidden="true"></span>
-              <span>a real-world game</span>
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>a real-world game · in beta</span>
             </div>
             <h1 class="m-0 font-display text-[clamp(72px,15vw,200px)] font-extrabold leading-[0.85] tracking-[-0.04em] text-ink">RAVLE</h1>
             <p class="mt-4 max-w-[28ch] font-display text-[clamp(22px,3.2vw,38px)] font-medium leading-[1.15] tracking-[-0.01em] text-ink-body">
@@ -101,7 +101,7 @@
                   inputmode="email"
                   placeholder="you@email.com"
                   maxlength="254"
-                  class="h-[60px] w-full min-w-0 flex-1 appearance-none rounded-[16px] border-0 bg-soft-1 px-5 font-sans text-[16px] font-medium leading-none text-ink outline-none transition-[background,box-shadow] placeholder:text-[14px] placeholder:font-normal placeholder:tracking-[0] placeholder:text-ink-muted hover:bg-soft-2 focus:bg-card focus:shadow-[0_0_0_2px_var(--color-primary),0_0_0_6px_rgba(225,29,72,0.15)] md:h-[64px] md:px-6 md:placeholder:text-[15px] lg:h-[72px] lg:rounded-[18px] lg:px-7 lg:text-[17px] lg:placeholder:text-[16px]"
+                  class="h-[58px] w-full min-w-0 flex-1 appearance-none rounded-[14px] border border-line bg-soft-1 px-5 font-sans text-[16px] font-medium leading-none text-ink outline-none transition-[background,box-shadow,border-color] placeholder:text-[14px] placeholder:font-normal placeholder:tracking-[0] placeholder:text-ink-muted hover:bg-soft-2 hover:border-line-strong focus:bg-card focus:border-primary focus:shadow-[0_0_0_3px_rgba(225,29,72,0.18)] md:h-[60px] md:px-6 md:placeholder:text-[14px] lg:h-[62px] lg:rounded-[16px] lg:px-6 lg:placeholder:text-[14.5px]"
                 />
                 <input
                   type="text"
@@ -114,7 +114,7 @@
                 <button
                   type="submit"
                   id="submit"
-                  class="group inline-flex h-[60px] w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-[16px] border-0 bg-ink px-6 font-display text-[15px] font-semibold text-white transition-[transform,opacity,background] hover:bg-ink-hover active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:h-[64px] md:text-[16px] min-[540px]:max-lg:w-auto lg:h-[72px] lg:rounded-[18px] lg:px-9 lg:text-[17px]"
+                  class="group inline-flex h-[58px] w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-[14px] border-0 bg-ink px-7 font-display text-[15px] font-semibold tracking-[-0.005em] text-white transition-[transform,opacity,background,box-shadow] hover:bg-ink-hover hover:shadow-[0_8px_22px_-8px_rgba(0,0,0,0.4)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:h-[60px] md:text-[15px] min-[540px]:max-lg:w-auto lg:h-[62px] lg:rounded-[16px] lg:px-8 lg:text-[16px]"
                 >
                   <span>Count me in</span>
                   <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
@@ -144,6 +144,33 @@
       </section>
 
       <!-- ============================================================== -->
+      <!-- LIVE TICKER — example AI-generated missions sliding by          -->
+      <!-- ============================================================== -->
+      <section class="ticker relative -mx-5 overflow-hidden border-y border-line bg-card md:-mx-12 xl:-mx-20" aria-label="Example missions">
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-page to-transparent md:w-24"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-page to-transparent md:w-24"></div>
+        <div class="ticker-track py-3.5 md:py-4">
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#2563eb">◎</span>Find a building older than 1900 within 1 km</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#db2777">✦</span>Sketch the next stranger you see — 3 minutes</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#16a34a">▲</span>Run to the nearest bench. Do 20 push-ups</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#ea580c">◈</span>Compliment a stranger. Get a real smile back</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#2563eb">◎</span>Photograph something blue you've never noticed</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#db2777">✦</span>Write a 2-line poem about the sky right now</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#16a34a">▲</span>Take 200 stairs in under 4 minutes</span>
+          <span class="ticker-pill"><span class="ticker-cat" style="background:#ea580c">◈</span>Ask someone for a song recommendation</span>
+          <!-- duplicates for seamless loop -->
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#2563eb">◎</span>Find a building older than 1900 within 1 km</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#db2777">✦</span>Sketch the next stranger you see — 3 minutes</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#16a34a">▲</span>Run to the nearest bench. Do 20 push-ups</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#ea580c">◈</span>Compliment a stranger. Get a real smile back</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#2563eb">◎</span>Photograph something blue you've never noticed</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#db2777">✦</span>Write a 2-line poem about the sky right now</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#16a34a">▲</span>Take 200 stairs in under 4 minutes</span>
+          <span class="ticker-pill" aria-hidden="true"><span class="ticker-cat" style="background:#ea580c">◈</span>Ask someone for a song recommendation</span>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
       <!-- WHAT — concept                                                  -->
       <!-- ============================================================== -->
       <section id="what" class="reveal scroll-mt-12 py-20 md:py-28 lg:py-36">
@@ -162,21 +189,21 @@
               RAVLE flips gaming on its head. Every challenge happens in the real world — your street, your park, your city. There's no infinite scroll, no watching. Just dares the AI cooks up, and the moves you actually make.
             </p>
             <ul class="m-0 grid grid-cols-2 gap-3 p-0 sm:grid-cols-4">
-              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
-                <div class="font-display text-[22px] font-bold leading-none text-ink">1k+</div>
-                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">missions</div>
+              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
+                <div class="font-display text-[26px] font-extrabold leading-none text-ink">1k+</div>
+                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">missions</div>
               </li>
-              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
-                <div class="font-display text-[22px] font-bold leading-none text-ink">4</div>
-                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">categories</div>
+              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
+                <div class="font-display text-[26px] font-extrabold leading-none text-ink">4</div>
+                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">categories</div>
               </li>
-              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
-                <div class="font-display text-[22px] font-bold leading-none text-ink">3</div>
-                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">play modes</div>
+              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
+                <div class="font-display text-[26px] font-extrabold leading-none text-ink">3</div>
+                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">play modes</div>
               </li>
-              <li class="rounded-[14px] border border-line bg-card p-3 text-center">
-                <div class="font-display text-[22px] font-bold leading-none text-ink">0</div>
-                <div class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">screen time</div>
+              <li class="stat-tile rounded-[14px] border border-line bg-card p-4 text-center">
+                <div class="font-display text-[26px] font-extrabold leading-none text-primary">0</div>
+                <div class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-ink-muted">screen time</div>
               </li>
             </ul>
           </div>
@@ -201,10 +228,10 @@
         </div>
 
         <div class="reveal-stagger grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#2563eb">
             <div class="flex items-center justify-between">
-              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">◎</span>
-              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">01</span>
+              <span class="mode-glyph flex h-12 w-12 items-center justify-center rounded-[14px] font-display text-[22px]">◎</span>
+              <span class="mode-num font-mono text-[10px] font-semibold uppercase tracking-[0.3em]">01</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Solo missions</h3>
@@ -213,15 +240,15 @@
               </p>
             </div>
             <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
-              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>play anywhere</span>
             </div>
           </article>
 
-          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#e11d48">
             <div class="flex items-center justify-between">
-              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">⚔</span>
-              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">02</span>
+              <span class="mode-glyph flex h-12 w-12 items-center justify-center rounded-[14px] font-display text-[22px]">⚔</span>
+              <span class="mode-num font-mono text-[10px] font-semibold uppercase tracking-[0.3em]">02</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Duels</h3>
@@ -230,15 +257,15 @@
               </p>
             </div>
             <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
-              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>1 v 1, no excuses</span>
             </div>
           </article>
 
-          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+          <article class="mode-card flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]" style="--mode-accent:#f59e0b">
             <div class="flex items-center justify-between">
-              <span class="flex h-12 w-12 items-center justify-center rounded-[14px] bg-primary-soft font-display text-[22px] text-primary">◈</span>
-              <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-muted">03</span>
+              <span class="mode-glyph flex h-12 w-12 items-center justify-center rounded-[14px] font-display text-[22px]">◈</span>
+              <span class="mode-num font-mono text-[10px] font-semibold uppercase tracking-[0.3em]">03</span>
             </div>
             <div>
               <h3 class="m-0 font-display text-[22px] font-bold tracking-[-0.01em] text-ink">Group FFAs</h3>
@@ -247,7 +274,7 @@
               </p>
             </div>
             <div class="mt-auto flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
-              <span class="h-1 w-1 rounded-full bg-primary"></span>
+              <span class="mode-dot h-1.5 w-1.5 rounded-full"></span>
               <span>everyone in</span>
             </div>
           </article>
@@ -311,23 +338,23 @@
           </h2>
         </div>
 
-        <ol class="reveal-stagger relative m-0 grid grid-cols-1 gap-4 p-0 md:grid-cols-3 md:gap-6">
+        <ol class="flow-list reveal-stagger relative m-0 grid grid-cols-1 gap-4 p-0 md:grid-cols-3 md:gap-6">
           <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
-            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">01</span>
+            <span class="step-num inline-flex h-10 w-10 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em] shadow-[0_4px_12px_-4px_rgba(225,29,72,0.35)]">01</span>
             <div>
               <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">AI summons a challenge</h3>
               <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Tuned to category and difficulty. Always different. Never the same dare twice.</p>
             </div>
           </li>
           <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
-            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">02</span>
+            <span class="step-num inline-flex h-10 w-10 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em] shadow-[0_4px_12px_-4px_rgba(225,29,72,0.35)]">02</span>
             <div>
               <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">You go do it</h3>
               <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Snap a photo as proof. RAVLE verifies you actually showed up — no fakes, no shortcuts.</p>
             </div>
           </li>
           <li class="relative flex flex-col gap-4 rounded-[20px] border border-line bg-card p-6">
-            <span class="step-num inline-flex h-9 w-9 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em]">03</span>
+            <span class="step-num inline-flex h-10 w-10 items-center justify-center rounded-full font-mono text-[12px] font-semibold tracking-[0.05em] shadow-[0_4px_12px_-4px_rgba(225,29,72,0.35)]">03</span>
             <div>
               <h3 class="m-0 font-display text-[20px] font-bold tracking-[-0.01em] text-ink">XP, streaks, trophies</h3>
               <p class="mt-2 text-[14.5px] leading-[1.6] text-ink-dim">Climb levels. Stack streaks. Earn coins for the shop. Beat your friends to the top of the board.</p>
