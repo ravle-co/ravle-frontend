@@ -486,10 +486,11 @@ body {
   flex: 1;
   width: 100%;
   min-width: 0;
-  height: 60px;
-  padding: 0 20px;
+  height: 72px;
+  padding: 0 22px;
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--color-ink);
   background: var(--color-surface-2);
   border: 0;
@@ -498,12 +499,13 @@ body {
   transition: background 160ms, box-shadow 160ms;
   -webkit-appearance: none;
   appearance: none;
+  line-height: 1;
 }
 @media (min-width: 1024px) {
   .email-row input[type="email"] {
-    height: 64px;
-    font-size: 17px;
-    padding: 0 22px;
+    height: 76px;
+    font-size: 19px;
+    padding: 0 26px;
   }
 }
 .email-row input[type="email"]:hover {
@@ -517,11 +519,11 @@ body {
   color: var(--color-ink-muted);
 }
 .email-row button {
-  height: 60px;
-  padding: 0 28px;
+  height: 72px;
+  padding: 0 32px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
   color: white;
   background: var(--color-ink);
   border: 0;
@@ -542,9 +544,9 @@ body {
 }
 @media (min-width: 1024px) {
   .email-row button {
-    height: 64px;
-    font-size: 17px;
-    padding: 0 32px;
+    height: 76px;
+    font-size: 18px;
+    padding: 0 36px;
   }
 }
 .email-row button:hover {
