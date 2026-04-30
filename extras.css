@@ -244,21 +244,21 @@ html { overflow-x: hidden; }
 }
 .preview-blob-1 {
   position: absolute;
-  top: -8%;
-  right: -12%;
-  width: 720px;
-  height: 720px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.22) 0%, rgba(225, 29, 72, 0) 70%);
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 720px;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.22) 0%, rgba(225, 29, 72, 0) 70%);
 }
 .preview-blob-2 {
   position: absolute;
-  bottom: -8%;
-  left: -12%;
-  width: 540px;
-  height: 540px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 70%);
+  bottom: 0;
+  left: 0;
+  width: 75%;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 70%);
 }
 
 /* ────────────────────────────────────────────────────────────────────
