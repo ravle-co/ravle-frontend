@@ -232,33 +232,32 @@ html { overflow-x: hidden; }
   .preview-grid { gap: 2rem 4.5rem; }
 }
 
-/* Wrap blobs in their own container so they don't bleed into adjacent
-   sections OR cause horizontal page overflow on mobile. The radial
-   gradients fade to 0 alpha at 70%, so the hard clip edge isn't visible. */
+/* Bright spot of each blob sits OUTSIDE the section so the visible part
+   inside the section is only the soft fade — no hard rectangular edges
+   at the section's top/right or bottom/left boundaries. The blobs can
+   extend past the viewport horizontally; html { overflow-x: hidden }
+   prevents that from causing a horizontal scrollbar. */
 .preview-blob-wrap {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  overflow: hidden;
 }
 .preview-blob-1 {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 80%;
-  max-width: 720px;
-  aspect-ratio: 1 / 1;
-  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.22) 0%, rgba(225, 29, 72, 0) 70%);
+  top: -140px;
+  right: -80px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.32) 0%, rgba(225, 29, 72, 0) 65%);
 }
 .preview-blob-2 {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 75%;
-  max-width: 540px;
-  aspect-ratio: 1 / 1;
-  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 70%);
+  bottom: -140px;
+  left: -80px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.26) 0%, rgba(245, 158, 11, 0) 65%);
 }
 
 /* ────────────────────────────────────────────────────────────────────
