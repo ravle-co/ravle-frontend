@@ -4,6 +4,11 @@
    delete this file (its rules will be in styles.css from src/tailwind.css).
    ────────────────────────────────────────────────────────────────────── */
 
+/* belt-and-suspenders: prevent horizontal page overflow at the document
+   root. body already has overflow-x:hidden but mobile browsers still
+   scroll horizontally if any descendant escapes html's flow. */
+html { overflow-x: hidden; }
+
 /* ════════════════════════════════════════════════════════════════════
    tailwind utility fills (classes used in HTML that the deployed
    styles.css doesn't carry yet)
@@ -228,13 +233,14 @@
 }
 
 /* Wrap blobs in their own container so they don't bleed into adjacent
-   sections. We let blobs extend past the wrap and rely on the radial
-   gradient itself fading to 0 alpha at 70% — no hard clip edge. */
+   sections OR cause horizontal page overflow on mobile. The radial
+   gradients fade to 0 alpha at 70%, so the hard clip edge isn't visible. */
 .preview-blob-wrap {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  overflow: hidden;
 }
 .preview-blob-1 {
   position: absolute;
