@@ -1050,47 +1050,29 @@
 /* ════════════════════════════════════════════════════════════════════
    CLOSING CTA — gradient blobs
    ════════════════════════════════════════════════════════════════════ */
-/* Sized smaller and pushed further outside the card on mobile so the
-   radial fade completes before the rounded corner clips it — otherwise
-   the soft glow gets cut hard at the corner edge and reads as
-   "shadowing" rather than a smooth tint. */
+/* Anchor blobs AT the card corner (top:0/right:0 or bottom:0/left:0)
+   with the gradient origin at that same corner. The brightest pixels
+   sit at the rounded corner and fade to 0 alpha well before reaching
+   the opposite edge — so there's nothing for the corner clip to chop. */
 .cta-blob-1 {
   position: absolute;
-  top: -140px;
-  right: -140px;
-  width: 220px;
-  height: 220px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.55) 0%, rgba(225, 29, 72, 0) 70%);
-  filter: blur(32px);
+  top: 0;
+  right: 0;
+  width: 70%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.5) 0%, rgba(225, 29, 72, 0) 65%);
   pointer-events: none;
 }
 .cta-blob-2 {
   position: absolute;
-  bottom: -140px;
-  left: -120px;
-  width: 200px;
-  height: 200px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(245, 158, 11, 0) 70%);
-  filter: blur(32px);
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.42) 0%, rgba(245, 158, 11, 0) 65%);
   pointer-events: none;
-}
-@media (min-width: 48rem) {
-  .cta-blob-1 {
-    top: -96px;
-    right: -96px;
-    width: 280px;
-    height: 280px;
-    filter: blur(40px);
-  }
-  .cta-blob-2 {
-    bottom: -96px;
-    left: -64px;
-    width: 220px;
-    height: 220px;
-    filter: blur(40px);
-  }
 }
 
 /* ════════════════════════════════════════════════════════════════════
