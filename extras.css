@@ -232,32 +232,40 @@ html { overflow-x: hidden; }
   .preview-grid { gap: 2rem 4.5rem; }
 }
 
-/* Bright spot of each blob sits OUTSIDE the section so the visible part
-   inside the section is only the soft fade — no hard rectangular edges
-   at the section's top/right or bottom/left boundaries. The blobs can
-   extend past the viewport horizontally; html { overflow-x: hidden }
-   prevents that from causing a horizontal scrollbar. */
+/* Blobs are contained in the section (wrap clips with overflow:hidden) so
+   they don't bleed into adjacent sections. The wrap has a soft mask on
+   all four edges so any non-zero alpha at the wrap boundary fades to 0
+   visually — no hard rectangular cut where the section meets the page. */
 .preview-blob-wrap {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  overflow: hidden;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-composite: source-in;
 }
 .preview-blob-1 {
   position: absolute;
-  top: -140px;
-  right: -80px;
-  width: 560px;
-  height: 560px;
-  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.32) 0%, rgba(225, 29, 72, 0) 65%);
+  top: 0;
+  right: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at top right, rgba(225, 29, 72, 0.34) 0%, rgba(225, 29, 72, 0) 70%);
 }
 .preview-blob-2 {
   position: absolute;
-  bottom: -140px;
-  left: -80px;
-  width: 560px;
-  height: 560px;
-  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.26) 0%, rgba(245, 158, 11, 0) 65%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 70%);
 }
 
 /* ────────────────────────────────────────────────────────────────────
