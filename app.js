@@ -47,6 +47,9 @@
               : "You're on the list. See you at launch.";
           setStatus(msg, "success");
           form.reset();
+          if (typeof window.va === "function") {
+            window.va("event", { name: "signup", data: { type } });
+          }
         } else {
           const data = await res.json().catch(() => ({}));
           setStatus(
