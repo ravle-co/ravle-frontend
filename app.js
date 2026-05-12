@@ -6,6 +6,7 @@
   const status = document.getElementById("status");
   const submit = document.getElementById("submit");
   const emailInput = document.getElementById("email");
+  const consentInput = document.getElementById("consent");
 
   if (form && status && submit && emailInput) {
     const setStatus = (msg, kind) => {
@@ -27,6 +28,12 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         setStatus("That email doesn't look right.", "error");
         emailInput.focus();
+        return;
+      }
+
+      if (consentInput && !consentInput.checked) {
+        setStatus("Please agree to the privacy policy first.", "error");
+        consentInput.focus();
         return;
       }
 
