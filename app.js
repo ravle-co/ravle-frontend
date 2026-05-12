@@ -51,7 +51,12 @@
         const res = await fetch("/api/subscribe", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, type, company }),
+          body: JSON.stringify({
+            email,
+            type,
+            company,
+            consent: consentInput ? consentInput.checked === true : false,
+          }),
         });
 
         if (res.ok) {
@@ -64,10 +69,14 @@
           track("signup", { type });
         } else {
           const data = await res.json().catch(() => ({}));
+          const messages = {
+            email: "That email doesn't look right.",
+            consent: "Please agree to the privacy policy first.",
+            disposable: "Please use a real email address.",
+            rate: "Too many tries — wait a minute and try again.",
+          };
           setStatus(
-            data.error === "email"
-              ? "That email doesn't look right."
-              : "Something went wrong. Try again in a bit.",
+            messages[data.error] || "Something went wrong. Try again in a bit.",
             "error"
           );
         }
