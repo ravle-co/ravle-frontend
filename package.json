@@ -8,14 +8,18 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles.css --minify",
+    "build:js": "esbuild src/app.js --bundle --minify --format=iife --target=es2020 --outfile=app.js",
+    "build": "npm run build:css && npm run build:js",
     "dev": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.4",
+    "esbuild": "^0.28.0",
     "tailwindcss": "^4.2.4"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0"
+    "@vercel/speed-insights": "^2.0.0",
+    "botid": "^1.5.11"
   }
 }

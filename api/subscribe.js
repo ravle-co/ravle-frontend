@@ -1,3 +1,5 @@
+import { checkBotId } from "botid/server";
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const ALLOWED_ORIGINS = new Set([
@@ -66,6 +68,20 @@ export default async function handler(req, res) {
   if (rateLimited(clientIp(req))) {
     res.setHeader("Retry-After", "60");
     return res.status(429).json({ error: "rate" });
+  }
+
+  // Vercel BotID — invisible challenge solved by the client SDK on page load
+  // and verified here. Fails closed: if the client didn't run the challenge
+  // (adblocker, bot, direct curl), this returns isBot=true and we 403.
+  if (process.env.VERCEL_ENV === "production") {
+    try {
+      const verification = await checkBotId();
+      if (verification.isBot) {
+        return res.status(403).json({ error: "bot" });
+      }
+    } catch {
+      return res.status(403).json({ error: "bot" });
+    }
   }
 
   const body = req.body && typeof req.body === "object" ? req.body : {};
