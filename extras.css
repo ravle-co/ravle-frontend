@@ -3234,8 +3234,10 @@ html, body { overflow-x: clip; }
 .site-footer {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 24px 0 32px;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 28px 0 36px;
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   letter-spacing: 0.2em;
@@ -3249,7 +3251,9 @@ html, body { overflow-x: clip; }
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    text-align: left;
     gap: 24px;
+    padding: 24px 0 32px;
     font-size: 11px;
   }
 }
