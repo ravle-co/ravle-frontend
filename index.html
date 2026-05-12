@@ -5,20 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#fafafa" />
     <meta name="description" content="RAVLE — real world, real stakes. AI-generated challenges, head-to-head duels with friends or strangers, group FFAs. Step outside and earn it." />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Ravle" />
+    <link rel="canonical" href="https://ravle.co/" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content="RAVLE — real world, real stakes" />
     <meta property="og:description" content="AI-generated challenges. Duels. Group FFAs. A real-world game." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ravle.co" />
+    <meta property="og:url" content="https://ravle.co/" />
+    <meta property="og:site_name" content="Ravle" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://ravle.co/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RAVLE — real world, real stakes. A real-world game." />
+
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://ravle.co" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e11d48'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='%23fafafa' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
+    <meta name="twitter:title" content="RAVLE — real world, real stakes" />
+    <meta name="twitter:description" content="AI-generated challenges. Duels. Group FFAs. A real-world game." />
+    <meta name="twitter:image" content="https://ravle.co/og.png" />
+    <meta name="twitter:image:alt" content="RAVLE — real world, real stakes. A real-world game." />
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://ravle.co/" />
+    <link rel="alternate" hreflang="x-default" href="https://ravle.co/" />
+
+    <!-- Icons / PWA -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e11d48'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='%23fafafa' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Network hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//va.vercel-scripts.com" />
+    <link rel="preconnect" href="https://va.vercel-scripts.com" crossorigin />
+
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/extras.css" />
     <title>RAVLE — real world, real stakes</title>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ravle",
+      "url": "https://ravle.co/",
+      "logo": "https://ravle.co/icon-512.png",
+      "description": "RAVLE — real world, real stakes. AI-generated challenges, head-to-head duels with friends or strangers, group FFAs.",
+      "foundingLocation": "Zurich, Switzerland",
+      "email": "hello@ravle.co"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ravle",
+      "url": "https://ravle.co/",
+      "inLanguage": "en"
+    }
+    </script>
   </head>
   <body>
     <div class="bg-decor" aria-hidden="true"></div>
@@ -196,6 +249,7 @@
           href="#what"
           class="group mx-auto mb-2 mt-2 flex flex-col items-center gap-1.5 self-center font-mono text-[10px] uppercase tracking-[0.3em] text-ink-dim transition-colors hover:text-ink"
           aria-label="Scroll to learn more"
+          data-cta="hero-scroll"
         >
           <span>more below</span>
           <svg class="scroll-cue-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -770,6 +824,7 @@
               <a
                 href="#hero"
                 class="group mt-8 inline-flex items-center gap-2 rounded-[16px] bg-primary px-7 py-4 font-display text-[15px] font-semibold text-white transition-[transform,background] hover:bg-primary-deep active:scale-[0.98] md:text-[16px] lg:rounded-[18px] lg:px-9 lg:py-5 lg:text-[17px]"
+                data-cta="get-on-list-outro"
               >
                 <span>Get on the list</span>
                 <span class="transition-transform group-hover:-translate-y-0.5" aria-hidden="true">↑</span>

@@ -1,4 +1,10 @@
 (() => {
+  const track = (name, data) => {
+    if (typeof window.va === "function") {
+      window.va("event", data ? { name, data } : { name });
+    }
+  };
+
   // -----------------------------------------------------------------------
   // Signup form
   // -----------------------------------------------------------------------
@@ -34,6 +40,7 @@
       if (consentInput && !consentInput.checked) {
         setStatus("Please agree to the privacy policy first.", "error");
         consentInput.focus();
+        track("signup_attempt_blocked", { reason: "consent", type });
         return;
       }
 
@@ -54,9 +61,7 @@
               : "You're on the list. See you at launch.";
           setStatus(msg, "success");
           form.reset();
-          if (typeof window.va === "function") {
-            window.va("event", { name: "signup", data: { type } });
-          }
+          track("signup", { type });
         } else {
           const data = await res.json().catch(() => ({}));
           setStatus(
@@ -96,4 +101,35 @@
     // Fallback: just show everything.
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
+
+  // -----------------------------------------------------------------------
+  // Analytics: CTA clicks (any [data-cta]) and 75% scroll depth.
+  // -----------------------------------------------------------------------
+  document.addEventListener(
+    "click",
+    (e) => {
+      const el = e.target instanceof Element ? e.target.closest("[data-cta]") : null;
+      if (el) track("cta_click", { location: el.getAttribute("data-cta") || "unknown" });
+    },
+    { passive: true }
+  );
+
+  let scrollFired = false;
+  try {
+    if (sessionStorage.getItem("ravle_scroll_75") === "1") scrollFired = true;
+  } catch {}
+  const onScroll = () => {
+    if (scrollFired) return;
+    const doc = document.documentElement;
+    const total = doc.scrollHeight - doc.clientHeight;
+    if (total <= 0) return;
+    const ratio = (window.scrollY || doc.scrollTop) / total;
+    if (ratio >= 0.75) {
+      scrollFired = true;
+      try { sessionStorage.setItem("ravle_scroll_75", "1"); } catch {}
+      track("scroll_75");
+      window.removeEventListener("scroll", onScroll);
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
 })();
